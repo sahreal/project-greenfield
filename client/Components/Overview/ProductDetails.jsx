@@ -1,19 +1,13 @@
-import React, { PureComponent } from 'react'
+import React from "react";
+import StyleSelector from "./StyleSelector.jsx";
 
-class ProductDetails extends PureComponent {
-    constructor(props) {
-        super(props)
+const ProductDetails = () => {
+  return (
+    <div>
+      ProductDetails
+      <StyleSelector />
+    </div>
+  );
+};
 
-        this.state = {
-            
-        }
-    }
-
-    render() {
-        return (
-            
-        )
-    }
-}
-
-export default ProductDetails
+export default ProductDetails;

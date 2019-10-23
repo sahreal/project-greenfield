@@ -1,19 +1,18 @@
-import React, { PureComponent } from 'react'
+import React from "react";
+import ImageGallery from "./ImageGallery.jsx";
+import ProductDetails from "./ProductDetails.jsx";
 
-class Overview extends PureComponent {
-    constructor(props) {
-        super(props)
+const Overview = () => {
+  return (
+    <div>
+      <Container>
+        <ImageGallery />
+      </Container>
+      <Container>
+        <ProductDetails />
+      </Container>
+    </div>
+  );
+};
 
-        this.state = {
-            
-        }
-    }
-
-    render() {
-        return (
-            
-        )
-    }
-}
-
-export default Overview
+export default Overview;

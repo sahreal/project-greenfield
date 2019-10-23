@@ -1,19 +1,12 @@
-import React, { PureComponent } from 'react'
+import React from "react";
+import ImageList from "./ImageList";
 
-class ImageGallery extends PureComponent {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            
-        }
-    }
-
-    render() {
-        return (
-            
-        )
-    }
-}
-
-export default ImageGallery
+const ImageGallery = () => {
+  return (
+    <div>
+      ImageGallery
+      <ImageList />
+    </div>
+  );
+};
+export default ImageGallery;
