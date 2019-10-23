@@ -1,18 +1,21 @@
 import React from "react";
-import { Switch, Router } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
-// import YOURCOMPONENTHERE from "../YOURCOMPONENTHERE/YOURCOMPONENTHERE.jsx";
+import OverView from "../Overview/Overview.jsx";
+//import Homepage from "../Homepage/Homepage.jsx";
 
 const App = () => {
   return (
     <div className="app-container">
-      {/* <Switch>
-        <Route to="/test" exact component={YOURCOMPONENTHERE} />
-        <Route to='/:product/:style' exact render={(props)=>{
+      <Link to="/test/Overview">Overview</Link>
+      <Link to="/">Home</Link>
+      <Switch>
+        <Route path="/test/Overview" exact component={OverView} />
+        {/* <Route to='/:product/:style' exact render={(props)=>{
           return <YOURCOMPONENTHERE someProp={props.something} />
-        }}
-      </Switch> */}
-      Hello World.
+        }} */}
+        {/* <Route path="/" exact component={Homepage} /> */}
+      </Switch>
     </div>
   );
 };
