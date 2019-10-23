@@ -1,16 +1,15 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-
-import StarReviews from "../Reviews/StarReviews.jsx";
+import StarReviewsContainer from "../../containers/StarReviewsContainer.jsx";
 import Homepage from "../Homepage/Homepage.jsx";
 
 const App = () => {
   return (
     <div className="app-container">
-      <Link to="/test/reviews">Test</Link>
-      <Link to="git/">Home</Link>
+      <Link to="/test/reviews">Reviews</Link>
+      <Link to="/">Home</Link>
       <Switch>
-        <Route path="/test/reviews" exact component={StarReviews} />
+        <Route path="/test/reviews" exact component={StarReviewsContainer} />
         {/* <Route to='/:product/:style' exact render={(props)=>{
           return <YOURCOMPONENTHERE someProp={props.something} />
         }} */}
