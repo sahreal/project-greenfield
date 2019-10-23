@@ -1,12 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
+import { Switch, Router } from "react-router-dom";
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+// import YOURCOMPONENTHERE from "../YOURCOMPONENTHERE/YOURCOMPONENTHERE.jsx";
 
-  render() {
-    return <div className="app-container">Hello world!</div>;
-  }
-}
+const App = () => {
+  return (
+    <div className="app-container">
+      {/* <Switch>
+        <Route to="/test" exact component={YOURCOMPONENTHERE} />
+        <Route to='/:product/:style' exact render={(props)=>{
+          return <YOURCOMPONENTHERE someProp={props.something} />
+        }}
+      </Switch> */}
+      Hello World.
+    </div>
+  );
+};
+
+export default App;

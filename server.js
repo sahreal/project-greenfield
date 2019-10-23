@@ -10,7 +10,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/../public/index.html"));
 });
 
-let port = process.env.PORT || 3001;
+let port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
