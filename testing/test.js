@@ -1,5 +1,5 @@
 //Write Enzyme tests here
-
+require("@babel/polyfill");
 const React = require("react");
 const { shallow, mount, render } = require("enzyme");
 
