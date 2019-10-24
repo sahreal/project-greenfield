@@ -7,6 +7,8 @@ const QuestionAnswerList = () => {
     <div className="QuestionAnswerList-container">
       Question Answer List
       <QuestionAnswerCard />
+      <input type="button" value="MORE ANSWER QUESTIONS" />
+      <input type="button" value="ADD A QUESTION + " />
     </div>
   );
 };

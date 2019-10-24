@@ -1,0 +1,20 @@
+.QASearch-container {
+  /* display: flex;
+  flex-direction: row; */
+}
+
+.QASearch-form {
+  padding: 10px 0;
+}
+
+.QASearch-form_inner {
+  display: flex;
+  border: solid 1px black;
+}
+
+.QA-form_input {
+  flex: 1;
+  border: none;
+  line-height: 4;
+  padding: 0 10px;
+}

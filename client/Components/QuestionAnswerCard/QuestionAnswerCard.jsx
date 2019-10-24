@@ -31,8 +31,9 @@ const QuestionAnswerCard = () => {
             </div>
           ))
         ) : (
-          <div>No Naswer</div>
+          <div>No Answer</div>
         )}
+        <input type="button" value="Load More Answers" />
       </div>
     </div>
   );
