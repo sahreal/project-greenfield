@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./../reducers/main.js";
 import changeRating from "../actions/Reviews/changeRating";
+import changeReviewList from "../actions/Reviews/changeReviewList";
 const {
   getInitialReviewsMeta,
   getInitialReviewsList

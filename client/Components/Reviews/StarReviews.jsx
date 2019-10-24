@@ -7,7 +7,7 @@ const StarReviews = ({ avg_rating }) => (
     <Rating
       name="customized-empty"
       value={avg_rating}
-      precision={0.1}
+      precision={0.25}
       emptyIcon={<StarBorderIcon fontSize="inherit" />}
       readOnly
     />
