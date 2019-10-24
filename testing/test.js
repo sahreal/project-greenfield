@@ -1,5 +1,15 @@
 //Write Enzyme tests here
 
-import { shallow, mount, render } from "enzyme";
+const React = require("react");
+const { shallow, mount, render } = require("enzyme");
 
-const wrapper = shallow(<Foo />);
+const App = require("../client/Components/App/App.jsx");
+
+// const wrapper = shallow(<App />);
+
+describe("Hoping App.js pass test", () => {
+  it("should render App", () => {
+    const component = shallow(<App />);
+    expect(component).toMatchSnapshot();
+  });
+});
