@@ -10,7 +10,8 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
-const ProductDetails = () => {
+const ProductDetails = productDetails => {
+  console.log(productDetails, "ow");
   return (
     <div className="ProductDetails">
       <div>stars: *****</div>

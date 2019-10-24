@@ -6,7 +6,7 @@ import StyleSelectorItem from "./StyleSelectorItem.jsx";
 const StyleSelector = () => {
   return (
     <div>
-      <Grid spacing={3}>
+      <Grid container spacing={3}>
         <Grid item xs={6} sm={3}>
           <StyleSelectorItem />
         </Grid>
