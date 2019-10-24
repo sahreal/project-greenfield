@@ -1,10 +1,9 @@
 import React from "react";
 import Rating from "@material-ui/lab/Rating";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import axios from "axios";
 
 const StarReviews = ({ avg_rating }) => (
-  <div>
+  <div className="review-starReview">
     <Rating
       name="customized-empty"
       value={avg_rating}
