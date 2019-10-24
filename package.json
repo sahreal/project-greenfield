@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --mode=production",
     "react-dev": "webpack --mode=development --watch",
     "start": "node server.js",
     "server-dev": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run react-dev\"",
-    "jest": "jest"
+    "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run react-dev\""
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "./testing/testSetup.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -45,11 +52,13 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "concurrently": "^5.0.0",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",

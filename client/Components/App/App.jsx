@@ -17,24 +17,21 @@ const App = () => {
       <Switch>
         <Route path="/test/reviews" exact component={StarReviewsContainer} />
         <Route path="/test/overview" exact component={OverView} />
-        {/* <Route to='/:product/:style' exact render={(props)=>{
-
-      <header className="header-container">
-        <ul className="header-ul">
-          <li className="header-li">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="header-li">
-            <Link to="/test/reviews">Test</Link>
-          </li>
-          <li className="header-li">
-            <Link to="/test/questionanswer">Question Answer</Link>
-          </li>
-        </ul>
-      </header>
-      <Switch>
-        <Route path="/test/reviews" exact component={StarReviews} />
         <Route path="/test/questionanswer" exact component={QuestionAnswer} />
+
+        <header className="header-container">
+          <ul className="header-ul">
+            <li className="header-li">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="header-li">
+              <Link to="/test/reviews">Test</Link>
+            </li>
+            <li className="header-li">
+              <Link to="/test/questionanswer">Question Answer</Link>
+            </li>
+          </ul>
+        </header>
 
         {/* EXAMPLE ROUTE WITH PROPS 
         <SHOULD NOT NEED PROPS DUE TO USING REDUX> 
