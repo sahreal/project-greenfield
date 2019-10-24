@@ -1,0 +1,8 @@
+.QACard-question {
+  display: flex;
+  flex-direction: row;
+}
+
+.QACard-question p {
+  flex-basis: 100%;
+}

@@ -1,17 +1,19 @@
 import React from "react";
 import { question, answer } from "./dummydata";
 
+import "./QuestionAnswerCard.css";
+
 const QuestionAnswerCard = () => {
   return (
     <div className="QuestionAnswerCard-container">
       <div className="QACard-question">
-        <p>
+        <p className="text-left">
           <strong>Q: {question.question_body}</strong>
         </p>
-        <span>
+        <p className="qacard-helpful text-right">
           Helpful ? <a>Yes</a>({question.question_helpfulness}) |{" "}
           <a>Add Answer</a>
-        </span>
+        </p>
       </div>
       <div className="QACard-answer">
         {answer.count > 0 ? (
