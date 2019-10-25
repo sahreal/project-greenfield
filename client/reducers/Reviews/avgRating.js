@@ -1,5 +1,4 @@
 import Redux from "redux";
-import { CardActions } from "@material-ui/core";
 
 const avgRatingReducer = (state = null, action) => {
   switch (action.type) {

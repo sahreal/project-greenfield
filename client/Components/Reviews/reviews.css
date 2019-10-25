@@ -1,0 +1,9 @@
+.review-summary {
+  font-weight: bold;
+}
+.review-name-and-date {
+  float: right;
+}
+.review-overview {
+  display: inline-block;
+}
