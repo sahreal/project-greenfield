@@ -4,10 +4,10 @@ import rootReducer from "./../reducers/main.js";
 
 //ACTIONS GO HERE
 import changeRating from "../actions/Reviews/changeRating";
-import questionsAction from "../actions/QA/questionsAction";
+import changePageNum from "../actions/Reviews/changePageNum.js";
 import changeReviewList from "../actions/Reviews/changeReviewList";
+import questionsAction from "../actions/QA/questionsAction";
 import getProductData from "../actions/Overview/getProductData.js";
-
 //EXTERNAL FUNCTIONS
 const fetchQuestions = require("./QuestionsAnswers/QuestionsAnswers.js");
 const {
@@ -25,10 +25,12 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 let productId = window.location.href.split("/").pop();
 
+//intialize data
 store.dispatch({
   type: "CHANGE_PRODUCT_ID",
   productId: productId
 });
+store.dispatch(changePageNum(0));
 
 getInitialReviewsMeta(productId).then(avg_rating => {
   store.dispatch(changeRating(avg_rating));

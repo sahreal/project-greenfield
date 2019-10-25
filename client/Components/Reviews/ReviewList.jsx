@@ -4,8 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import LoadReview from "./LoadReview.jsx";
 
-<<<<<<< HEAD
-const ReviewList = ({ reviewList, handleClickMoreReview }) => (
+const ReviewList = ({ reviewList, handleClickMoreReview, productId }) => (
   <div>
     <div className="review-reviewList">
       {reviewList.map(review => {
@@ -15,7 +14,10 @@ const ReviewList = ({ reviewList, handleClickMoreReview }) => (
     <div>
       <Grid container justify="flex-start">
         <Grid item xs={2}>
-          <LoadReview handleClickMoreReview={handleClickMoreReview} />
+          <LoadReview
+            handleClickMoreReview={handleClickMoreReview}
+            productId={productId}
+          />
         </Grid>
         <Grid item xs={2}>
           <Button size="small" variant="outlined">
@@ -24,20 +26,6 @@ const ReviewList = ({ reviewList, handleClickMoreReview }) => (
         </Grid>
       </Grid>
     </div>
-||||||| merged common ancestors
-const ReviewList = ({ reviewList }) => (
-  <div className="review-reviewList">
-    {reviewList.map(review => {
-      return <ReviewEntry review={review} key={review.review_id} />;
-    })}
-=======
-const ReviewList = ({ reviewList, productId }) => (
-  <div className="review-reviewList">
-    {console.log(productId)}
-    {reviewList.map(review => {
-      return <ReviewEntry review={review} key={review.review_id} />;
-    })}
->>>>>>> staging
   </div>
 );
 
