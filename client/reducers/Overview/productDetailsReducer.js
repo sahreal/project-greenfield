@@ -1,9 +1,8 @@
 import Redux from "redux";
-//import { CardActions } from "@material-ui/core";
 
-const productDetailsReducer = (state = null, action) => {
+const productDetailsReducer = (state = {}, action) => {
   switch (action.type) {
-    case "CHANGE_PRODUCTDETAILS":
+    case "CHANGE_PRODUCT_DETAILS":
       return action.productDetails;
     default:
       return state;

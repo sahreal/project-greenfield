@@ -1,5 +1,5 @@
 const getProductDetails = productDetails => ({
-  type: "CHANGE_PRODUCTDETAILS",
+  type: "CHANGE_PRODUCT_DETAILS",
   productDetails: productDetails
 });
 
