@@ -3,7 +3,8 @@ import ReviewList from "../Components/Reviews/ReviewList";
 
 let mapStatetoProps = store => {
   return {
-    reviewList: store.reviewList
+    reviewList: store.reviewList,
+    productId: store.productId
   };
 };
 
