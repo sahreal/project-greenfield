@@ -1,6 +1,6 @@
 import Redux from "redux";
 
-const avgRatingReducer = (state = 3.0, action) => {
+const avgRatingReducer = (state = null, action) => {
   switch (action.type) {
     case "CHANGE_RATING":
       return action.avg_rating;
