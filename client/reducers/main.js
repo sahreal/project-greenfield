@@ -4,13 +4,15 @@ import reviewListReducer from "./Reviews/reviewList.js";
 import productImageReducer from "./Overview/productImageReducer";
 import productDetailsReducer from "./Overview/productDetailsReducer";
 import questionsReducer from "./QA/questionsReducer.js";
+import productIdReducer from "./productID.js";
 
 const rootReducer = combineReducers({
   avg_rating: avgRatingReducer,
   reviewList: reviewListReducer,
   productData: productImageReducer,
   productDetails: productDetailsReducer,
-  questions: questionsReducer
+  questions: questionsReducer,
+  productID: productIdReducer
 });
 
 export default rootReducer;
