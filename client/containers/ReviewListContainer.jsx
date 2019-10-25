@@ -4,7 +4,8 @@ import loadMoreReview from "../actions/Reviews/loadMoreReview.js";
 
 let mapStatetoProps = store => {
   return {
-    reviewList: store.reviewList
+    reviewList: store.reviewList,
+    productId: store.productId
   };
 };
 let mapDispatchToProps = dispatch => {

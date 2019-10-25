@@ -21,23 +21,32 @@ const getProductDetails = require("./Overview/getProductDetails.js");
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-getInitialReviewsMeta(1).then(avg_rating => {
+//getting the product id from window
+
+let productId = window.location.href.split("/").pop();
+
+store.dispatch({
+  type: "CHANGE_PRODUCT_ID",
+  productId: productId
+});
+
+getInitialReviewsMeta(productId).then(avg_rating => {
   store.dispatch(changeRating(avg_rating));
 });
 
-fetchQuestions(1).then(data => {
+fetchQuestions(productId).then(data => {
   store.dispatch(questionsAction(data));
 });
 
-getInitialReviewsList(1).then(reviewList => {
+getInitialReviewsList(productId).then(reviewList => {
   store.dispatch(changeReviewList(reviewList));
 });
 
-getProductStyles(1).then(productData => {
+getProductStyles(productId).then(productData => {
   store.dispatch(getProductData(productData));
 });
 
-getProductDetails(1).then(productDetails => {
+getProductDetails(productId).then(productDetails => {
   store.dispatch(getProductDetails(productDetails));
 });
 

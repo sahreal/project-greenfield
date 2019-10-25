@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import LoadReview from "./LoadReview.jsx";
 
+<<<<<<< HEAD
 const ReviewList = ({ reviewList, handleClickMoreReview }) => (
   <div>
     <div className="review-reviewList">
@@ -23,6 +24,20 @@ const ReviewList = ({ reviewList, handleClickMoreReview }) => (
         </Grid>
       </Grid>
     </div>
+||||||| merged common ancestors
+const ReviewList = ({ reviewList }) => (
+  <div className="review-reviewList">
+    {reviewList.map(review => {
+      return <ReviewEntry review={review} key={review.review_id} />;
+    })}
+=======
+const ReviewList = ({ reviewList, productId }) => (
+  <div className="review-reviewList">
+    {console.log(productId)}
+    {reviewList.map(review => {
+      return <ReviewEntry review={review} key={review.review_id} />;
+    })}
+>>>>>>> staging
   </div>
 );
 

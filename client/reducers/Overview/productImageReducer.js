@@ -1,7 +1,7 @@
 import Redux from "redux";
 //import { CardActions } from "@material-ui/core";
 
-const productImageReducer = (state = null, action) => {
+const productImageReducer = (state = [], action) => {
   switch (action.type) {
     case "CHANGE_PRODUCTDATA":
       return action.productData;
