@@ -3,7 +3,8 @@ import ProductDetails from "../Components/Overview/ProductDetails/ProductDetails
 
 let mapStatetoProps = store => {
   return {
-    productDetails: store.productDetails
+    productDetails: store.productDetails,
+    productData: store.productData
   };
 };
 
