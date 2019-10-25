@@ -1,11 +1,13 @@
 import React from "react";
 import ImageList from "./ImageList";
+//import { createSocket } from "dgram";
 
-const ImageGallery = () => {
+const ImageGallery = productData => {
+  console.log(productData, "JDFJSJJDJFSD");
   return (
     <div>
       ImageGallery
-      <ImageList />
+      <ImageList productData={productData} />
     </div>
   );
 };
