@@ -7,7 +7,7 @@ import Homepage from "../Homepage/Homepage.jsx";
 import QuestionAnswer from "../QuestionAnswer/QuestionAnswer.jsx";
 import store from "../../store/store.js";
 
-// import "./App.css";
+import "./App.css";
 
 const App = () => {
   return (
