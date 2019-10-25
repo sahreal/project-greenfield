@@ -25,6 +25,11 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 let productId = window.location.href.split("/").pop();
 
+store.dispatch({
+  type: "CHANGE_PRODUCT_ID",
+  productId: productId
+});
+
 getInitialReviewsMeta(productId).then(avg_rating => {
   store.dispatch(changeRating(avg_rating));
 });

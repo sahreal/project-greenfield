@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   productData: productImageReducer,
   productDetails: productDetailsReducer,
   questions: questionsReducer,
-  productID: productIdReducer
+  productId: productIdReducer
 });
 
 export default rootReducer;
