@@ -3,19 +3,21 @@ import ImageListEntry from "./ImageListEntry";
 import getProductData from "../../../actions/Overview/getProductData";
 
 const ImageList = ({ productData }) => {
-  console.log(productData.productData, "productData");
+  console.log(productData, "productData");
 
   return (
     <div>
       ImageList
-      {productData.productData[0].photos.map(image => {
-        return (
-          <ImageListEntry
-            key={image.style_id}
-            imageThumbnail={image.thumbnail_url}
-          />
-        );
-      })}
+      {productData.productData.length !== 0
+        ? productData.productData[0].photos.map(image => {
+            return (
+              <ImageListEntry
+                key={image.style_id}
+                imageThumbnail={image.thumbnail_url}
+              />
+            );
+          })
+        : null}
     </div>
   );
 };
