@@ -7,8 +7,24 @@
 .review-overview {
   display: inline-block;
 }
-
-.review {
-  padding: 20px;
+.review-avg-rating-number {
+  display: inline-block;
+  font-size: 80px;
+}
+.review-avg-rating-star {
+  display: inline-block;
+  margin: auto;
+}
+.reviews {
   margin: 20px;
+}
+
+.review-username {
+  font-size: 15px;
+}
+.review-entry {
+  margin: 25px;
+}
+.review-title {
+  font-size: 20px;
 }

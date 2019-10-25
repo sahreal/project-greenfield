@@ -10,8 +10,8 @@ const ReviewMeta = ({ avg_rating }) => (
         <StarReviews avg_rating={avg_rating} />
       </div>
     </div>
-    <div className="review-rating-breakdown">5 star......</div>
-    <div className="review-rating-factor">size.....</div>
+    <div className="review-rating-breakdown">rating breakdown</div>
+    <div className="review-rating-factor">rating factor</div>
   </div>
 );
 
