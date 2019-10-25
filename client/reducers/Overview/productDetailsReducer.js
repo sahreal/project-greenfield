@@ -1,5 +1,4 @@
 import Redux from "redux";
-//import { CardActions } from "@material-ui/core";
 
 const productDetailsReducer = (state = {}, action) => {
   switch (action.type) {

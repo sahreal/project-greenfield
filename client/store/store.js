@@ -51,9 +51,8 @@ getProductStyles(productId).then(productData => {
   store.dispatch(getProductData(productData));
 });
 
-
 getProductDetails(productId).then(productDetails => {
-  store.dispatch(getProductDetails(productDetails));
+  store.dispatch(ProductDetails(productDetails));
 });
 
 export default store;

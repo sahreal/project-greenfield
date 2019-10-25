@@ -6,13 +6,11 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import MenuItem from "@material-ui/core/MenuItem";
-//import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 const ProductDetails = (productDetails, productData) => {
-  console.log(productData, "LOOK ITS IN PRODUCT DETAILS");
   return Object.keys(productDetails.productDetails).length !== 0 ? (
     <div className="ProductDetails">
       <div>stars: *****</div>
