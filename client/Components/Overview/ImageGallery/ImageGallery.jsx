@@ -3,7 +3,7 @@ import ImageList from "./ImageList";
 //import { createSocket } from "dgram";
 
 const ImageGallery = productData => {
-  console.log(productData, "JDFJSJJDJFSD");
+  // console.log(productData, "JDFJSJJDJFSD");
   return (
     <div>
       ImageGallery

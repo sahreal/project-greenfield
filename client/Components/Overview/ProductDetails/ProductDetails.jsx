@@ -5,28 +5,28 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import Grid from "@material-ui/core/Grid";
+import MenuItem from "@material-ui/core/MenuItem";
+//import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
-const ProductDetails = productDetails => {
-  console.log(productDetails, "ow");
-  return (
+const ProductDetails = (productDetails, productData) => {
+  console.log(productData, "LOOK ITS IN PRODUCT DETAILS");
+  return Object.keys(productDetails.productDetails).length !== 0 ? (
     <div className="ProductDetails">
       <div>stars: *****</div>
-      <h1 className="ProductName">Product Name</h1>
-      <div className="Category">Category</div>
-      <div className="Category">Price</div>
+      <h1 className="ProductName">{productDetails.productDetails[1]}</h1>
+      <div className="Category">{productDetails.productDetails[4]}</div>
+      <div className="Price">{productDetails.productDetails[5]}</div>
       <StyleSelector />
       <Container>
         <FormControl variant="outlined">
           <InputLabel>Size</InputLabel>
           <Select native>
-            <option value="" />
-            <option value={10}>Small</option>
-            <option value={20}>Medium</option>
-            <option value={30}>Large</option>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
           </Select>
           {/* <FormHelperText>Helper text</FormHelperText> */}
         </FormControl>
@@ -46,7 +46,6 @@ const ProductDetails = productDetails => {
           variant="outlined"
           color="inherit"
           size="large"
-          // className={classes.button}
           startIcon={<AddShoppingCartIcon />}
         >
           Add to Cart
@@ -55,6 +54,10 @@ const ProductDetails = productDetails => {
           Star
         </Button>
       </Container>
+    </div>
+  ) : (
+    <div>
+      <h1>Loading</h1>
     </div>
   );
 };
