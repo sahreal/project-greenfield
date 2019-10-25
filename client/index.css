@@ -18,3 +18,7 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
+
+::placeholder {
+  font-weight: bold;
+}

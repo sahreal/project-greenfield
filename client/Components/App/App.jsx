@@ -5,26 +5,20 @@ import Reviews from "../Reviews/Reviews.jsx";
 import OverView from "../Overview/Overview.jsx";
 import Homepage from "../Homepage/Homepage.jsx";
 import QuestionAnswer from "../QuestionAnswer/QuestionAnswer.jsx";
-import "./App.css";
+
+// import "./App.css";
 
 const App = () => {
   return (
     <div className="app-container">
-      <Link to="/test/reviews">Reviews</Link>
-      <Link to="/test/overview">Overview</Link>
-      <Link to="/">Home</Link>
-      <Switch>
-        <Route path="/test/reviews" exact component={Reviews} />
-        <Route path="/test/overview" exact component={OverView} />
-        {/* <Route to='/:product/:style' exact render={(props)=>{
-
-      <header className="header-container">
+      {/* HEADER. LINKS GOES BELOW HERE */}
+      {/* <header className="header-container">
         <ul className="header-ul">
           <li className="header-li">
             <Link to="/">Home</Link>
           </li>
           <li className="header-li">
-            <Link to="/test/reviews">Test</Link>
+            <Link to="/test/reviews">Reviews</Link>
           </li>
           <li className="header-li">
             <Link to="/test/overview">Overview</Link>
@@ -33,10 +27,10 @@ const App = () => {
             <Link to="/test/questionanswer">Question Answer</Link>
           </li>
         </ul>
-      </header>
-
+      </header> */}
+      {/* ROUTES GOES INSIDE HERE */}
       <Switch>
-        <Route path="/test/reviews" exact component={StarReviewsContainer} />
+        <Route path="/test/reviews" exact component={Reviews} />
         <Route path="/test/overview" exact component={OverView} />
         <Route path="/test/questionanswer" exact component={QuestionAnswer} />
 
