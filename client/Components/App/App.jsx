@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="app-container">
       {/* HEADER. LINKS GOES BELOW HERE */}
-      <header className="header-container">
+      {/* <header className="header-container">
         <ul className="header-ul">
           <li className="header-li">
             <Link to="/">Home</Link>
@@ -27,7 +27,7 @@ const App = () => {
             <Link to="/test/questionanswer">Question Answer</Link>
           </li>
         </ul>
-      </header>
+      </header> */}
       {/* ROUTES GOES INSIDE HERE */}
       <Switch>
         <Route path="/test/reviews" exact component={Reviews} />
