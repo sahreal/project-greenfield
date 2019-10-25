@@ -11,21 +11,14 @@ import QuestionAnswer from "../QuestionAnswer/QuestionAnswer.jsx";
 const App = () => {
   return (
     <div className="app-container">
-      <Link to="/test/reviews">Reviews</Link>
-      <Link to="/test/overview">Overview</Link>
-      <Link to="/">Home</Link>
-      <Switch>
-        <Route path="/test/reviews" exact component={Reviews} />
-        <Route path="/test/overview" exact component={OverView} />
-        {/* <Route to='/:product/:style' exact render={(props)=>{
-
+      {/* HEADER. LINKS GOES BELOW HERE */}
       <header className="header-container">
         <ul className="header-ul">
           <li className="header-li">
             <Link to="/">Home</Link>
           </li>
           <li className="header-li">
-            <Link to="/test/reviews">Test</Link>
+            <Link to="/test/reviews">Reviews</Link>
           </li>
           <li className="header-li">
             <Link to="/test/overview">Overview</Link>
@@ -35,9 +28,9 @@ const App = () => {
           </li>
         </ul>
       </header>
-
+      {/* ROUTES GOES INSIDE HERE */}
       <Switch>
-        <Route path="/test/reviews" exact component={StarReviewsContainer} />
+        <Route path="/test/reviews" exact component={Reviews} />
         <Route path="/test/overview" exact component={OverView} />
         <Route path="/test/questionanswer" exact component={QuestionAnswer} />
 
