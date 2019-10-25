@@ -5,7 +5,6 @@ import Reviews from "../Reviews/Reviews.jsx";
 import OverView from "../Overview/Overview.jsx";
 import Homepage from "../Homepage/Homepage.jsx";
 import QuestionAnswer from "../QuestionAnswer/QuestionAnswer.jsx";
-
 import "./App.css";
 
 const App = () => {

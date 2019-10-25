@@ -4,7 +4,7 @@ import ReviewListContainer from "../../containers/ReviewListContainer.jsx";
 import ReviewMetaContainer from "../../containers/ReviewMetaContainer.jsx";
 
 const Reviews = () => (
-  <Grid container>
+  <Grid container spacing={3} className="reviews">
     <Grid item xs={4}>
       <ReviewMetaContainer />
     </Grid>
