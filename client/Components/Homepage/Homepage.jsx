@@ -9,8 +9,8 @@ import "./Homepage.css";
 const Homepage = () => {
   return (
     <div className="homepage-container">
+      <OverView />
       <Reviews />
-      {/* <OverView /> */}
       <QuestionAnswer />
     </div>
   );
