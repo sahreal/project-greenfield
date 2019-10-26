@@ -36,7 +36,6 @@ store.dispatch({
   type: "CHANGE_PRODUCT_ID",
   productId: productId
 });
-store.dispatch(changePageNum(0));
 
 getInitialReviewsMeta(productId).then(avg_rating => {
   store.dispatch(changeRating(avg_rating));

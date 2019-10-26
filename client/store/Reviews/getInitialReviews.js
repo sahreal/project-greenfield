@@ -16,10 +16,10 @@ const getInitialReviewsMeta = product_id => {
 const getInitialReviewsList = product_id => {
   return axios
     .get(`http://18.223.1.30/reviews/${product_id}/list`, {
-      params: { page: 1, count: 2, sort: "relevant" }
+      params: { count: 100000, sort: "relevant" }
     })
     .then(({ data }) => {
-      // console.log(data);
+      console.log(data.results);
       return data.results;
     })
     .catch(e => {
