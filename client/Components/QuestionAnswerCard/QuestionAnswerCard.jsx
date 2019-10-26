@@ -3,6 +3,15 @@ import React from "react";
 
 import "./QuestionAnswerCard.css";
 
+const convertDate = dateString => {
+  const date = new Date(dateString);
+  return date.toLocaleString("default", {
+    month: "long",
+    year: "numeric",
+    day: "numeric"
+  });
+};
+
 const QuestionAnswerCard = ({ question }) => {
   return question ? (
     <div className="QuestionAnswerCard-container">
@@ -15,22 +24,23 @@ const QuestionAnswerCard = ({ question }) => {
           <a>Add Answer</a>
         </p>
       </div>
-      <div className="QACard-answer">
+      <div className="QACard-answer_outer">
         {Object.keys(question.answers).map(answer => (
-          <div>
+          <div key={answer} className="QACard-answer_inner">
             <p>
               <strong>A: </strong>
               {question.answers[answer].body}
             </p>
             {question.answers[answer].photos.length > 0
               ? question.answers[answer].photos.map(pic => (
-                  <img src={pic.url} />
+                  <img src={pic.url} key={pic.id} />
                 ))
               : null}
             <p>
               by {question.answers[answer].answerer_name}{" "}
-              {question.answers[answer].date} | Helpful ? <a> Yes </a> (
-              {question.answers[answer].helpfulness}) | <a> Report </a>
+              {convertDate(question.answers[answer].date)} | Helpful ?{" "}
+              <a> Yes </a> ({question.answers[answer].helpfulness}) |{" "}
+              <a> Report </a>
             </p>
           </div>
         ))}
