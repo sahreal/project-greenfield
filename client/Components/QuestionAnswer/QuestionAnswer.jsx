@@ -5,11 +5,11 @@ import QuestionAnswerList from "../QuestionAnswerList/QuestionAnswerList.jsx";
 
 import "./QuestionAnswer.css";
 
-const QuestionAnswer = () => {
+const QuestionAnswer = ({ questions }) => {
   return (
     <div className="QuestionAnswer-container">
       <QuestionAnswerSearchForm />
-      <QuestionAnswerList />
+      <QuestionAnswerList questions={questions} />
     </div>
   );
 };

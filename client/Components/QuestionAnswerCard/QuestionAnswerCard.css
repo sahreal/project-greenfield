@@ -6,6 +6,7 @@
 .QACard-question {
   display: flex;
   flex-direction: row;
+  margin: 5px 0;
 }
 
 .QACard-question p {
