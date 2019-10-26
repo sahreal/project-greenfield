@@ -16,7 +16,6 @@ class ReviewList extends React.Component {
       reviewList: [],
       allReviewList: this.props.reviewList
     };
-    console.log(this.state.allReviewList);
     this.handleClickMoreReview = this.handleClickMoreReview.bind(this);
     this.updatePage = this.updatePage.bind(this);
     this.fetchReviews = this.fetchReviews.bind(this);
