@@ -10,6 +10,10 @@ const getInitialReviewsMeta = product_id => {
         ratings.reduce((partial_sum, a) => partial_sum + a, 0) / ratings.length;
       let avg_rating = (Math.round(rating * 10) / 10).toFixed(1);
       return avg_rating;
+    })
+    .catch(e => {
+      console.log(e);
+      return {};
     });
 };
 
@@ -24,6 +28,7 @@ const getInitialReviewsList = product_id => {
     })
     .catch(e => {
       console.log(e);
+      return [];
     });
 };
 
