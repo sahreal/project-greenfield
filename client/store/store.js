@@ -37,9 +37,17 @@ store.dispatch({
   productId: productId
 });
 
-getInitialReviewsMeta(productId).then(avg_rating => {
-  store.dispatch(changeRating(avg_rating));
-});
+getInitialReviewsMeta(productId).then(
+  ({ characteristics, ratings, recommended }) => {
+    let allRatings = Object.values(ratings);
+    let rating =
+      allRatings.reduce((partial_sum, a) => partial_sum + a, 0) /
+      allRatings.length;
+    let avg_rating = (Math.round(rating * 10) / 10).toFixed(1);
+    store.dispatch(changeRating(avg_rating));
+    store.dispatch(changeMetaData({ characteristics, ratings, recommended }));
+  }
+);
 
 fetchQuestions(productId).then(data => {
   store.dispatch(questionsAction(data));

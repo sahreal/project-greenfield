@@ -14,5 +14,4 @@ const rootReducer = combineReducers({
   questions: questionsReducer,
   productId: productIdReducer
 });
-console.log(rootReducer.avg_rating);
 export default rootReducer;
