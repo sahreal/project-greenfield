@@ -4,9 +4,9 @@ import thunk from "redux-thunk";
 import rootReducer from "./../reducers/main.js";
 
 //ACTIONS GO HERE
-import changeRating from "../actions/Reviews/changeRating";
-import changePageNum from "../actions/Reviews/changePageNum.js";
-import changeReviewList from "../actions/Reviews/changeReviewList";
+import changeRating from "../actions/Reviews/changeRating.js";
+import changeMetaData from "../actions/Reviews/changeMetaData.js";
+import changeReviewList from "../actions/Reviews/changeReviewList.js";
 import questionsAction from "../actions/QA/questionsAction";
 import getProductData from "../actions/Overview/getProductData.js";
 import ProductDetails from "../actions/Overview/ProductDetails.js";

@@ -4,17 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import LoadReview from "./LoadReview.jsx";
 import axios from "axios";
-import Promise from "bluebird";
 
 class ReviewList extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       pageNum: 1,
       sortBy: "relevant",
-      reviewList: [],
-      allReviewList: this.props.reviewList
+      reviewList: []
     };
     this.handleClickMoreReview = this.handleClickMoreReview.bind(this);
     this.updatePage = this.updatePage.bind(this);
@@ -37,11 +34,17 @@ class ReviewList extends React.Component {
         let currentReviewList = this.state.reviewList;
         let newReviewList = currentReviewList.concat(data.results);
         this.setState({ reviewList: newReviewList });
+      })
+      .catch(e => {
+        console.log(e);
       });
   }
   handleClickMoreReview() {
-    Promise.promisify(this.updatePage)().then(this.fetchReviews());
-    console.log("afterupdatepage", this.state.pageNum);
+    Promise.resolve(this.updatePage())
+      .then(this.fetchReviews)
+      .catch(err => {
+        console.log(err);
+      });
   }
   handleSortBy(e) {
     this.setState({ reviewList: [] });
@@ -53,7 +56,7 @@ class ReviewList extends React.Component {
     return (
       <div>
         <div>
-          <p>{this.state.allReviewList.length} Reviews, sorted by</p>
+          <p>{this.props.reviewList.length} Reviews, sorted by</p>
           <select value={this.state.sortBy} onChange={this.handleSortBy}>
             <option value="relevant">Relevant</option>
             <option value="helpful">Helpful</option>

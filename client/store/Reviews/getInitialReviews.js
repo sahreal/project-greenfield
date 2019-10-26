@@ -5,6 +5,9 @@ const getInitialReviewsMeta = product_id => {
     .get(`http://18.223.1.30/reviews/${product_id}/meta`)
     .then(({ data }) => {
       return data;
+    })
+    .catch(e => {
+      return {};
     });
 };
 
@@ -19,6 +22,7 @@ const getInitialReviewsList = product_id => {
     })
     .catch(e => {
       console.log(e);
+      return [];
     });
 };
 

@@ -2,11 +2,10 @@ import Redux from "redux";
 
 const metaDataReducer = (state = {}, action) => {
   switch (action.type) {
-    case "CHANGE_REVIEW_LIST":
-      console.log(action);
-      return action.reviewList;
+    case "CHANGE_META_DATA":
+      return action.metaData;
     default:
       return state;
   }
 };
-export default reviewListReducer;
+export default metaDataReducer;

@@ -2,8 +2,9 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import StarReviews from "./StarReviews.jsx";
 
-const ReviewMeta = ({ avg_rating }) => (
+const ReviewMeta = ({ avg_rating, metaData }) => (
   <div className="review-meta">
+    {console.log(metaData, avg_rating)}
     <div className="review-overview">
       <div className="review-avg-rating-number">{avg_rating}</div>
       <div className="review-avg-rating-star">
