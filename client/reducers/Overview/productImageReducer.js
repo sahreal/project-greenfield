@@ -1,6 +1,18 @@
 import Redux from "redux";
 
-const productImageReducer = (state = [], action) => {
+const productImageReducer = (
+  state = [
+    {
+      name: "",
+      original_price: "",
+      photos: [],
+      sale_price: "",
+      skus: {},
+      style_id: 0
+    }
+  ],
+  action
+) => {
   switch (action.type) {
     case "CHANGE_PRODUCT_DATA":
       return action.productData;

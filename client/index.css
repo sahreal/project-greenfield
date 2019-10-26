@@ -22,3 +22,23 @@ a:active {
 ::placeholder {
   font-weight: bold;
 }
+
+.style-bubbles-container {
+  display: flex;
+  width: 350px;
+  flex-wrap: nowrap;
+}
+
+.MuiAvatar-img {
+  margin: 10px !important;
+}
+.Image {
+  display: flex;
+  width: 500px;
+  flex-wrap: wrap;
+}
+
+.MainImage {
+  height: 100%;
+  width: 100%;
+}

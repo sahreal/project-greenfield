@@ -7,8 +7,15 @@ let mapStatetoProps = store => {
   };
 };
 
+var mapDispatchToProps = dispatch => ({
+  handleStyleClick: image => {
+    dispatch(getProductData(image));
+  }
+});
+
 const ImageGalleryContainer = connect(
   mapStatetoProps,
+  mapDispatchToProps,
   null
 )(ImageGallery);
 
