@@ -1,3 +1,8 @@
+.QuestionAnswerCard-container {
+  margin: 10px 0;
+  padding: 5px 0;
+}
+
 .QACard-question {
   display: flex;
   flex-direction: row;
@@ -5,4 +10,18 @@
 
 .QACard-question p {
   flex-basis: 100%;
+}
+
+.QACard-answer_outer {
+  margin: 5px 0;
+  padding: 5px 0;
+}
+
+.QACard-answer_inner {
+  margin: 5px 0;
+  padding: 5px 0;
+}
+
+.QACard-answer_inner p {
+  margin: 5px 0;
 }
