@@ -4,8 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
 const ImageList = props => {
-  // console.log(productData, "ProductDetails");
-
   return (
     <Grid container>
       <Grid item>
@@ -14,8 +12,8 @@ const ImageList = props => {
             ? props.productData.map((item, index) => {
                 return (
                   <ImageListEntry
-                    key={index}
-                    id={item.id}
+                    key={`a${index}`}
+                    index={index}
                     imageThumbnail={item.thumbnail_url}
                     handleClick={props.handleClick}
                   />

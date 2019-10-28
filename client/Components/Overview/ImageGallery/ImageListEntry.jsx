@@ -13,10 +13,11 @@ const useStyles = makeStyles({
 
 const ImageListEntry = props => {
   const classes = useStyles();
+
   return (
     <div>
       <Avatar
-        value={props.id}
+        alt={props.index.toString()}
         src={props.imageThumbnail}
         className={classes.imageList}
         onClick={props.handleClick}

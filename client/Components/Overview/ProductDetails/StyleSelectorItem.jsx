@@ -10,17 +10,16 @@ const useStyles = makeStyles({
   }
 });
 
-const StyleSelectorItem = ({ imageThumbnail, handleStyleClick }) => {
+const StyleSelectorItem = props => {
   const classes = useStyles();
   return (
-    <div onClick={() => console.log(handleStyleClick, "WOW")}>
-      <a>
-        <Avatar
-          src={imageThumbnail}
-          className={classes.bigAvatar}
-          onClick={() => handleStyleClick(image)}
-        />
-      </a>
+    <div>
+      <Avatar
+        alt={props.index.toString()}
+        src={props.imageThumbnail}
+        className={classes.bigAvatar}
+        onClick={props.handleClick}
+      />
     </div>
   );
 };
