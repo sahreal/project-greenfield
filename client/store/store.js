@@ -4,9 +4,10 @@ import thunk from "redux-thunk";
 import rootReducer from "./../reducers/main.js";
 
 //ACTIONS GO HERE
-import changeRating from "../actions/Reviews/changeRating";
+import changeRating from "../actions/Reviews/changeRating.js";
+import changeMetaData from "../actions/Reviews/changeMetaData.js";
+import changeReviewList from "../actions/Reviews/changeReviewList.js";
 import questionsAction from "../actions/QA/questionsAction";
-import changeReviewList from "../actions/Reviews/changeReviewList";
 import getProductData from "../actions/Overview/getProductData.js";
 import ProductDetails from "../actions/Overview/ProductDetails.js";
 
@@ -30,14 +31,23 @@ const store = createStore(
 
 let productId = window.location.href.split("/").pop();
 
+//intialize data
 store.dispatch({
   type: "CHANGE_PRODUCT_ID",
   productId: productId
 });
 
-getInitialReviewsMeta(productId).then(avg_rating => {
-  store.dispatch(changeRating(avg_rating));
-});
+getInitialReviewsMeta(productId).then(
+  ({ characteristics, ratings, recommended }) => {
+    let allRatings = Object.values(ratings);
+    let rating =
+      allRatings.reduce((partial_sum, a) => partial_sum + a, 0) /
+      allRatings.length;
+    let avg_rating = (Math.round(rating * 10) / 10).toFixed(1);
+    store.dispatch(changeRating(avg_rating));
+    store.dispatch(changeMetaData({ characteristics, ratings, recommended }));
+  }
+);
 
 fetchQuestions(productId).then(data => {
   store.dispatch(questionsAction(data));
