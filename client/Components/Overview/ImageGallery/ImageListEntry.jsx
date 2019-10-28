@@ -1,10 +1,26 @@
 import React from "react";
-import getProductData from "../../../actions/Overview/getProductData";
+//import getProductData from "../../../actions/Overview/getProductData";
+import Avatar from "@material-ui/core/Avatar";
+import { makeStyles } from "@material-ui/core/styles";
 
-const ImageListEntry = ({ imageThumbnail }) => {
+const useStyles = makeStyles({
+  imageList: {
+    margin: 5,
+    width: 60,
+    height: 60
+  }
+});
+
+const ImageListEntry = props => {
+  const classes = useStyles();
   return (
     <div>
-      <img src={imageThumbnail} />
+      <Avatar
+        value={props.id}
+        src={props.imageThumbnail}
+        className={classes.imageList}
+        onClick={props.handleClick}
+      />
     </div>
   );
 };

@@ -3,17 +3,21 @@ import ImageListEntry from "./ImageListEntry";
 import Grid from "@material-ui/core/Grid";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
-const ImageList = ({ productData }) => {
+const ImageList = props => {
+  // console.log(productData, "ProductDetails");
+
   return (
     <Grid container>
       <Grid item>
         <RadioGroup name="spacing" aria-label="spacing" row>
-          {productData.productData.length !== 0
-            ? productData.productData[0].photos.map(image => {
+          {props.productData.length !== 0
+            ? props.productData.map((item, index) => {
                 return (
                   <ImageListEntry
-                    key={image.style_id}
-                    imageThumbnail={image.thumbnail_url}
+                    key={index}
+                    id={item.id}
+                    imageThumbnail={item.thumbnail_url}
+                    handleClick={props.handleClick}
                   />
                 );
               })
