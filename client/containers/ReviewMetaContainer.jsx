@@ -3,7 +3,8 @@ import ReviewMeta from "../Components/Reviews/ReviewMeta";
 
 let mapStatetoProps = store => {
   return {
-    avg_rating: store.avg_rating
+    avg_rating: store.avg_rating,
+    metaData: store.metaData
   };
 };
 
