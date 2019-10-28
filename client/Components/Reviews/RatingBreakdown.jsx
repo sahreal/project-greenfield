@@ -2,11 +2,10 @@ import React from "react";
 import RatingBreakdownEntry from "./RatingBreakdownEntry.jsx";
 
 const RatingBreakdown = ({ metaData }) => {
-  let totalRatings = Object.values(metaData).reduce(
+  let totalRatings = Object.values(metaData.ratings).reduce(
     (partial_sum, a) => partial_sum + a,
     0
   );
-  console.log(totalRatings);
 
   return (
     <div>
@@ -16,6 +15,7 @@ const RatingBreakdown = ({ metaData }) => {
             rating={rating}
             percentage={metaData.ratings[rating] / totalRatings}
             numOfRating={metaData.ratings[rating]}
+            key={rating}
           />
         );
       })}

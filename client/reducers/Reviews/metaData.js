@@ -1,6 +1,11 @@
 import Redux from "redux";
 
-const metaDataReducer = (state = {}, action) => {
+const initialState = {
+  ratings: {},
+  characteristics: {},
+  recomemded: {}
+};
+const metaDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case "CHANGE_META_DATA":
       return action.metaData;

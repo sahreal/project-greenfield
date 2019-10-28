@@ -5,7 +5,6 @@ import RatingBreakdown from "./RatingBreakdown.jsx";
 
 const ReviewMeta = ({ avg_rating, metaData }) => (
   <div className="review-meta">
-    {console.log(metaData, avg_rating)}
     <div className="review-overview">
       <div className="review-avg-rating-number">{avg_rating}</div>
       <div className="review-avg-rating-star">
