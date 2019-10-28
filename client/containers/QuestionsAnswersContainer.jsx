@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import QuestionAnswerList from "../Components/QuestionAnswerList/QuestionAnswerList.jsx";
+import QuestionAnswer from "../Components/QuestionAnswer/QuestionAnswer.jsx";
 
 let mapStatetoProps = store => {
   return {
@@ -10,6 +10,6 @@ let mapStatetoProps = store => {
 const QuestionsAnswersContainer = connect(
   mapStatetoProps,
   null
-)(QuestionAnswerList);
+)(QuestionAnswer);
 
 export default QuestionsAnswersContainer;
