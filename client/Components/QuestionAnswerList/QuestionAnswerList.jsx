@@ -6,9 +6,16 @@ export default class QuestionAnswerList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false
+      // isClicked: false,
+      questionLimit: 4
     };
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick() {
+    this.setState({ questionLimit: this.state.questionLimit + 2 });
+  }
+
   render() {
     return (
       <div className="QuestionAnswerList-container">
@@ -28,17 +35,17 @@ export default class QuestionAnswerList extends React.Component {
             // )
             {
               if (
-                this.state.isClicked &&
-                Object.keys(question.answers).length > 0
-              ) {
-                return (
-                  <QuestionAnswerCard
-                    question={question}
-                    key={question.question_id}
-                  />
-                );
-              } else if (
-                index < 4 &&
+                //   this.state.isClicked &&
+                //   Object.keys(question.answers).length > 0
+                // ) {
+                //   return (
+                //     <QuestionAnswerCard
+                //       question={question}
+                //       key={question.question_id}
+                //     />
+                //   );
+                // } else if (
+                index < this.state.questionLimit &&
                 Object.keys(question.answers).length > 0
               ) {
                 return (
@@ -51,7 +58,13 @@ export default class QuestionAnswerList extends React.Component {
             }
           )}
         {/* <QuestionAnswerCard question={questions[0]} /> */}
-        <input type="button" value="MORE ANSWERED QUESTIONS" />
+        {this.props.questions.length > this.state.questionLimit ? (
+          <input
+            type="button"
+            value="MORE ANSWERED QUESTIONS"
+            onClick={this.handleClick}
+          />
+        ) : null}
         <input type="button" value="ADD A QUESTION + " />
       </div>
     );
