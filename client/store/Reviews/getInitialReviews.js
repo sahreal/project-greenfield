@@ -6,7 +6,7 @@ const getInitialReviewsMeta = product_id => {
     .then(({ data }) => {
       return data;
     })
-    .catch(e => {
+    .catch(e => {   
       return {};
     });
 };

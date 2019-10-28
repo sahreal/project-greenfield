@@ -17,7 +17,11 @@
     ],
     "setupFiles": [
       "./testing/testSetup.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "repository": {
     "type": "git",
@@ -63,9 +67,11 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
     "eslint": "^6.5.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
+    "react-test-renderer": "^16.11.0",
     "style-loader": "^1.0.0",
     "url-loader": "^2.2.0",
     "webpack": "^4.41.2",
