@@ -35,3 +35,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.MuiSlider-thumb {
+  background-color: none;
+  border-radius: 0%;
+}
