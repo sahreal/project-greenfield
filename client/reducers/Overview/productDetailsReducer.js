@@ -5,7 +5,7 @@ const productDetailsReducer = (
     {
       name: "",
       original_price: "",
-      photos: [{ url: "" }],
+      photos: [{ thumbnail_url: "", url: "" }],
       sale_price: "",
       skus: {},
       style_id: 0

@@ -6,7 +6,7 @@ const getInitialReviewsMeta = product_id => {
     .then(({ data }) => {
       return data;
     })
-    .catch(e => {   
+    .catch(e => {
       return {};
     });
 };
@@ -17,7 +17,6 @@ const getInitialReviewsList = product_id => {
       params: { count: 100000, sort: "relevant" }
     })
     .then(({ data }) => {
-      console.log(data.results);
       return data.results;
     })
     .catch(e => {

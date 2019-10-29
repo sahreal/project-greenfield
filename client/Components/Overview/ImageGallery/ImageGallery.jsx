@@ -1,26 +1,32 @@
 import React from "react";
 import ImageList from "./ImageList";
-import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import notFound from "../logos/notFound.svg";
 
-const ImageGallery = props => {
+const ImageGallery = ({ productData = [], handleClick, id, styleId }) => {
+  // console.log(productData[1], "ProductStyles");
   return (
     <div className="Image">
       <Container maxWidth="sm">
-        {props.productData[0].photos.length !== 0 ? (
-          <img
-            className="MainImage"
-            src={props.productData[0].photos[props.id].url}
-          />
-        ) : null}
+        {productData[0].photos.length === 0 ||
+        productData[0].photos[0].thumbnail_url === null ? (
+          <div className="imageNotFound">
+            IMAGE NOT FOUND
+            <img src={notFound} />
+          </div>
+        ) : (
+          <div>
+            <img
+              className="MainImage"
+              src={productData[styleId].photos[id].url}
+            />
+            <ImageList
+              productData={productData[styleId].photos}
+              handleClick={handleClick}
+            />
+          </div>
+        )}
       </Container>
-      {props.productData[0].photos.length !== 0 ? (
-        <ImageList
-          productData={props.productData[0].photos}
-          handleClick={props.handleClick}
-        />
-      ) : null}
     </div>
   );
 };

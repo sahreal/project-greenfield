@@ -11,16 +11,25 @@ class Overview extends PureComponent {
     super(props);
 
     this.state = {
-      id: 0
+      id: 0,
+      styleId: 0
+      //   noImage: false
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleStyleChange = this.handleStyleChange.bind(this);
   }
 
   handleClick(e) {
     console.log(e.target.alt, "alt test");
     this.setState({
-      id: e.target.alt
+      id: Number(e.target.alt)
+    });
+  }
+
+  handleStyleChange(e) {
+    this.setState({
+      styleId: Number(e.target.alt)
     });
   }
 
@@ -33,6 +42,7 @@ class Overview extends PureComponent {
               <ImageGalleryContainer
                 id={this.state.id}
                 handleClick={this.handleClick}
+                styleId={this.state.styleId}
               />
             </Paper>
           </Grid>
@@ -41,6 +51,8 @@ class Overview extends PureComponent {
               <ProductDetailsContainer
                 id={this.state.id}
                 handleClick={this.handleClick}
+                styleId={this.state.styleId}
+                handleStyleChange={this.handleStyleChange}
               />
             </Paper>
           </Grid>

@@ -15,11 +15,12 @@ const useStyles = makeStyles({
 const ProductForm = props => {
   const classes = useStyles();
   return (
+    //ternary operator if null disable
     <Container>
       <FormControl variant="outlined" color="inherit">
         {" "}
         Size:
-        <Select native value="size" className={classes.root}>
+        <Select native autoWidth={true} className={classes.root}>
           {Object.keys(props.productData.skus).map(size => {
             return (
               <option key={size} value={size}>
@@ -34,7 +35,7 @@ const ProductForm = props => {
         <Select native autoWidth={true} className={classes.root}>
           {Object.values(props.productData.skus).map(quantity => {
             return (
-              <option key={quantity} value={quantity}>
+              <option key={quantity} value={props.id}>
                 {quantity}
               </option>
             );

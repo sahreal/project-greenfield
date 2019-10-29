@@ -4,7 +4,6 @@ import getProductData from "../actions/Overview/getProductData";
 
 let mapStatetoProps = store => {
   return {
-    productDetails: store.productDetails,
     productData: store.productData
   };
 };

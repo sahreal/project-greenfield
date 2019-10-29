@@ -18,7 +18,7 @@ const StyleSelectorItem = props => {
         alt={props.index.toString()}
         src={props.imageThumbnail}
         className={classes.bigAvatar}
-        onClick={props.handleClick}
+        onClick={props.handleStyleChange}
       />
     </div>
   );
