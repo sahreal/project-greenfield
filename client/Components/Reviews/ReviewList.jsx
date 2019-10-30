@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import LoadReview from "./LoadReview.jsx";
 import axios from "axios";
-import { thisExpression } from "@babel/types";
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -12,8 +11,7 @@ class ReviewList extends React.Component {
     this.state = {
       pageNum: 1,
       sortBy: "relevant",
-      reviewList: [],
-      filterReviewList: []
+      reviewList: []
     };
     this.handleClickMoreReview = this.handleClickMoreReview.bind(this);
     this.updatePage = this.updatePage.bind(this);
@@ -61,6 +59,17 @@ class ReviewList extends React.Component {
   }
 
   render() {
+    if (this.props.filterOn) {
+      var allReviews = this.props.reviewList;
+      var filterReviewList = [];
+      for (let i = 0; i < this.props.filterArray.length; i++) {
+        let filterR = allReviews.filter(review => {
+          return review.rating + "" === this.props.filterArray[i];
+        });
+        filterReviewList = [...filterReviewList, ...filterR];
+      }
+      console.log("filterlist", filterReviewList);
+    }
     return (
       <div>
         <div>
@@ -73,7 +82,7 @@ class ReviewList extends React.Component {
         </div>
         <div className="review-reviewList">
           {this.props.filterOn
-            ? this.state.filterReviewList.map(review => {
+            ? filterReviewList.map(review => {
                 return <ReviewEntry review={review} key={review.review_id} />;
               })
             : this.state.reviewList.map(review => {
