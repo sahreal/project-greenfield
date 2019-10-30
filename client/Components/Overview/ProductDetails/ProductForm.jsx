@@ -38,9 +38,6 @@ const ProductForm = props => {
         {" "}
         Size:
         <Select native autoWidth={true} className={classes.root} displayEmpty>
-          <MenuItem value="" disabled>
-            Placeholder
-          </MenuItem>
           {Object.keys(props.productData.skus).map(size => {
             return (
               <option key={size} value={size}>
