@@ -16,6 +16,7 @@
       "enzyme-to-json/serializer"
     ],
     "setupFiles": [
+      "raf/polyfill",
       "./testing/testSetup.js"
     ],
     "moduleNameMapper": {
