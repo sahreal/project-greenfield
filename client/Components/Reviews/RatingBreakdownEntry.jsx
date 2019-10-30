@@ -1,5 +1,6 @@
 import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import "./reviews.css";
 
 const RatingBreakdownEntry = ({
   rating,
@@ -8,7 +9,7 @@ const RatingBreakdownEntry = ({
   handleClickRating
 }) => (
   <div
-    className="row"
+    className="row rating-breakdown-entry"
     onClick={() => {
       handleClickRating(rating);
     }}
