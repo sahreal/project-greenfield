@@ -2,6 +2,6 @@
 
 const { configure } = require("enzyme");
 const Adapter = require("enzyme-adapter-react-16");
-require("@babel/polyfill");
+import "@babel/polyfill";
 
 configure({ adapter: new Adapter() });
