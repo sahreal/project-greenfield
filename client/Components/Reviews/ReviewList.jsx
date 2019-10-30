@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import LoadReview from "./LoadReview.jsx";
 import axios from "axios";
+import { thisExpression } from "@babel/types";
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class ReviewList extends React.Component {
     this.state = {
       pageNum: 1,
       sortBy: "relevant",
-      reviewList: []
+      reviewList: [],
+      filterReviewList: []
     };
     this.handleClickMoreReview = this.handleClickMoreReview.bind(this);
     this.updatePage = this.updatePage.bind(this);
@@ -47,11 +49,17 @@ class ReviewList extends React.Component {
       });
   }
   handleSortBy(e) {
-    this.setState({ reviewList: [] });
-    this.setState({ pageNum: 1 });
-    this.setState({ sortBy: e.target.value });
-    this.fetchReviews();
+    Promise.resolve(
+      this.setState({ reviewList: [], pageNum: 1, sortBy: e.target.value })
+    )
+      .then(() => {
+        this.fetchReviews();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
+
   render() {
     return (
       <div>
@@ -64,9 +72,13 @@ class ReviewList extends React.Component {
           </select>
         </div>
         <div className="review-reviewList">
-          {this.state.reviewList.map((review, i) => {
-            return <ReviewEntry review={review} key={review.review_id} />;
-          })}
+          {this.props.filterOn
+            ? this.state.filterReviewList.map(review => {
+                return <ReviewEntry review={review} key={review.review_id} />;
+              })
+            : this.state.reviewList.map(review => {
+                return <ReviewEntry review={review} key={review.review_id} />;
+              })}
         </div>
         <div>
           <Grid container justify="flex-start">
