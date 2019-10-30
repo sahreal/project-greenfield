@@ -15,12 +15,12 @@ class Reviews extends React.Component {
     if (idx >= 0) {
       let new_filter_array = this.state.filterArray;
       new_filter_array.splice(idx, 1);
-
       this.setState({ filterArray: new_filter_array });
     } else {
       let new_array = this.state.filterArray;
       new_array.push(star);
       this.setState({ filterArray: new_array });
+      console.log("filterArray after adding", this.state.filterArray);
     }
     if (this.state.filterArray.length === 0) {
       this.setState({ filterOn: false });
@@ -36,14 +36,14 @@ class Reviews extends React.Component {
       <div className="reviews">
         <h5 className="review-title">Ratings & Reviews</h5>
         <Grid container spacing={3}>
-          <Grid item xs={4}>
+          <Grid item xs={5}>
             <ReviewMetaContainer
               handleClearFilter={this.handleClearFilter}
               handleClickRating={this.handleClickRating}
               filterOn={this.state.filterOn}
             />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             <ReviewListContainer
               filterOn={this.state.filterOn}
               filterArray={this.state.filterArray}
