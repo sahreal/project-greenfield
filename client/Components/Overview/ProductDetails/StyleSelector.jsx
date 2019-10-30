@@ -4,18 +4,27 @@ import Grid from "@material-ui/core/Grid";
 import StyleSelectorItem from "./StyleSelectorItem.jsx";
 import "../../../index.css";
 
-const StyleSelector = ({ productData, handleStyleClick }) => {
+const StyleSelector = ({
+  productData,
+  handleStyleChange,
+  styleId,
+  checkMarker
+}) => {
   return (
     <div>
+      <div className="StyleSelector"> STYLE > {productData[styleId].name}</div>
       <Grid container spacing={6}>
         <Grid item xs={6} sm={3}>
           <div className="style-bubbles-container">
-            {productData[0].photos.map((image, index) => {
+            {productData.map((image, index) => {
               return (
                 <StyleSelectorItem
-                  key={index}
-                  imageThumbnail={image.thumbnail_url}
-                  handleStyleClick={handleStyleClick}
+                  key={`a${index}`}
+                  styleId={styleId}
+                  index={index}
+                  imageThumbnail={image.photos[0].thumbnail_url}
+                  handleStyleChange={handleStyleChange}
+                  checkMarker={checkMarker}
                 />
               );
             })}

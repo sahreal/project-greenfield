@@ -1,0 +1,10 @@
+.WOW {
+  height: 1%;
+  width: 1%;
+}
+
+.Carousel {
+  display: flex;
+  width: 500px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,39 @@
+.socialMedia {
+  display: flex;
+  height: 1%;
+  width: 1%;
+  flex-wrap: nowrap;
+}
+
+.socialMedia img {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.Sale {
+  color: red;
+}
+
+.PriceStyling {
+  text-decoration: line-through;
+}
+
+.check {
+  height: 25px;
+  width: 25px;
+  background: transparent;
+  position: absolute;
+  z-index: 2;
+}
+
+.avatar-holder {
+  height: 80px;
+  width: 80px;
+}
+
+.readReviews {
+  display: inline-block;
+  position: relative;
+  text-decoration: underline;
+}

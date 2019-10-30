@@ -1,16 +1,21 @@
 import React from "react";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
-import MenuItem from "@material-ui/core/MenuItem";
-import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import StyleSelectorContainer from "../../../containers/StyleSelectorContainer.jsx";
-import StarReviews from "../../Reviews/StarReviews";
+//import StyleSelector from "./StyleSelector";
+import StarReviewsContainer from "../../../containers/StarReviewsContainer";
 import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import ProductInfo from "./ProductInfo.jsx";
+import ProductForm from "./ProductForm.jsx";
+import ProductSlogan from "./ProductSlogan.jsx";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import facebook from "../logos/facebook.svg";
+import pinterest from "../logos/pinterest.svg";
+import twitter from "../logos/twitter.svg";
+import Container from "@material-ui/core/Container";
+import "./productDetails.css";
 
 const useStyles = makeStyles({
   root: {
@@ -26,43 +31,52 @@ const useStyles = makeStyles({
   }
 });
 
-const ProductDetails = productDetails => {
+const ProductDetails = ({
+  productDetails,
+  productData = [],
+  reviewList,
+  id,
+  styleId,
+  handleStyleChange,
+  checkMarker
+}) => {
   const classes = useStyles();
+
   return Object.keys(productDetails).length !== 0 ? (
     <div className="ProductDetails">
-      <StarReviews />
-      <h1 className="ProductName">{productDetails.productDetails[1]}</h1>
-      <div className="Category">{productDetails.productDetails[4]}</div>
-      <div className="Price">{productDetails.productDetails[5]}</div>
-      <StyleSelectorContainer />
-      <Container>
-        <FormControl variant="outlined" color="inherit">
-          {" "}
-          Size:
-          <Select native value="size" className={classes.root}>
-            {Object.keys(productDetails.productData[0].skus).map(size => {
-              return (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              );
-            })}
-          </Select>
-          {/* <FormHelperText>Helper text</FormHelperText> */}
-        </FormControl>
-        <FormControl variant="outlined" color="inherit">
-          Quantity:
-          <Select native autoWidth={true} className={classes.root}>
-            {Object.values(productDetails.productData[0].skus).map(quantity => {
-              return (
-                <option key={quantity} value={quantity}>
-                  {quantity}
-                </option>
-              );
-            })}
-          </Select>
-        </FormControl>
-      </Container>
+      <div className="stars">
+        <StarReviewsContainer />
+        <div className="readReviews">Read {reviewList.length} Reviews</div>
+        <ProductInfo
+          productDetails={productDetails}
+          productData={productData[styleId]}
+        />
+      </div>
+      {productData.length !== 0 ? (
+        <StyleSelectorContainer
+          styleId={styleId}
+          handleStyleChange={handleStyleChange}
+          checkMarker={checkMarker}
+        />
+      ) : null}
+      {productData[styleId].skus.null === null ? (
+        <Container>
+          <FormControl variant="outlined" color="inherit" disabled>
+            Size:
+            <Select native value="size" className={classes.root}>
+              <option>Out of Stock</option>
+            </Select>
+          </FormControl>
+          <FormControl variant="outlined" color="inherit" disabled>
+            Quantity:
+            <Select native className={classes.root}>
+              <option>Out of Stock</option>
+            </Select>
+          </FormControl>
+        </Container>
+      ) : (
+        <ProductForm productData={productData[id]} />
+      )}
       <Button
         variant="outlined"
         color="inherit"
@@ -72,6 +86,29 @@ const ProductDetails = productDetails => {
       >
         Add to Cart
       </Button>
+      <div className="socialMedia">
+        <a href="https://www.facebook.com">
+          <img src={facebook} alt="FBLogo" className="fb sharebutton" />
+        </a>
+        <a href="https://www.twitter.com">
+          <img
+            src={twitter}
+            alt="TwitterLogo"
+            className="twitter sharebutton"
+          />
+        </a>
+        <a href="https://www.pinterest.com">
+          <img
+            src={pinterest}
+            alt="pinterestLogo"
+            className="pinterest sharebutton"
+          />
+        </a>
+      </div>
+      <ProductSlogan
+        slogan={productDetails[2]}
+        description={productDetails[3]}
+      />
     </div>
   ) : (
     <div>
