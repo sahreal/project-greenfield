@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
+import checkMark from "../logos/check.svg";
 
 const useStyles = makeStyles({
   bigAvatar: {
@@ -10,15 +11,26 @@ const useStyles = makeStyles({
   }
 });
 
-const StyleSelectorItem = props => {
+const StyleSelectorItem = ({
+  styleId,
+  index,
+  imageThumbnail,
+  handleStyleChange,
+  checkMarker
+}) => {
   const classes = useStyles();
   return (
-    <div>
+    <div className="avatar-holder">
+      {checkMarker === false && index === 0 ? (
+        <img src={checkMark} alt="CheckMark" className="check" />
+      ) : checkMarker === true && index === styleId ? (
+        <img src={checkMark} alt="CheckMark" className="check" />
+      ) : null}
       <Avatar
-        alt={props.index.toString()}
-        src={props.imageThumbnail}
+        alt={index.toString()}
+        src={imageThumbnail}
         className={classes.bigAvatar}
-        onClick={props.handleStyleChange}
+        onClick={handleStyleChange}
       />
     </div>
   );

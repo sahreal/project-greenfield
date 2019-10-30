@@ -4,7 +4,12 @@ import Grid from "@material-ui/core/Grid";
 import StyleSelectorItem from "./StyleSelectorItem.jsx";
 import "../../../index.css";
 
-const StyleSelector = ({ productData, handleStyleChange, styleId }) => {
+const StyleSelector = ({
+  productData,
+  handleStyleChange,
+  styleId,
+  checkMarker
+}) => {
   return (
     <div>
       <div className="StyleSelector"> STYLE > {productData[styleId].name}</div>
@@ -15,9 +20,11 @@ const StyleSelector = ({ productData, handleStyleChange, styleId }) => {
               return (
                 <StyleSelectorItem
                   key={`a${index}`}
+                  styleId={styleId}
                   index={index}
                   imageThumbnail={image.photos[0].thumbnail_url}
                   handleStyleChange={handleStyleChange}
+                  checkMarker={checkMarker}
                 />
               );
             })}

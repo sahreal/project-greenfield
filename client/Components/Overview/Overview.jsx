@@ -12,7 +12,8 @@ class Overview extends PureComponent {
 
     this.state = {
       id: 0,
-      styleId: 0
+      styleId: 0,
+      checkMarker: false
       //   noImage: false
     };
 
@@ -21,7 +22,6 @@ class Overview extends PureComponent {
   }
 
   handleClick(e) {
-    console.log(e.target.alt, "alt test");
     this.setState({
       id: Number(e.target.alt)
     });
@@ -29,7 +29,8 @@ class Overview extends PureComponent {
 
   handleStyleChange(e) {
     this.setState({
-      styleId: Number(e.target.alt)
+      styleId: Number(e.target.alt),
+      checkMarker: true
     });
   }
 
@@ -52,6 +53,7 @@ class Overview extends PureComponent {
                 id={this.state.id}
                 handleClick={this.handleClick}
                 styleId={this.state.styleId}
+                checkMarker={this.state.checkMarker}
                 handleStyleChange={this.handleStyleChange}
               />
             </Paper>

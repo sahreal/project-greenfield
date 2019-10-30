@@ -37,25 +37,26 @@ const ProductDetails = ({
   reviewList,
   id,
   styleId,
-  handleStyleChange
+  handleStyleChange,
+  checkMarker
 }) => {
   const classes = useStyles();
-  console.log(reviewList, "FFFFFFFFF");
+
   return Object.keys(productDetails).length !== 0 ? (
     <div className="ProductDetails">
       <div className="stars">
         <StarReviewsContainer />
-        Read {reviewList.length} Reviews
+        <div className="readReviews">Read {reviewList.length} Reviews</div>
+        <ProductInfo
+          productDetails={productDetails}
+          productData={productData[styleId]}
+        />
       </div>
-      <ProductInfo
-        productDetails={productDetails}
-        productData={productData[styleId]}
-      />
-
       {productData.length !== 0 ? (
         <StyleSelectorContainer
           styleId={styleId}
           handleStyleChange={handleStyleChange}
+          checkMarker={checkMarker}
         />
       ) : null}
       {productData[styleId].skus.null === null ? (
@@ -86,18 +87,23 @@ const ProductDetails = ({
         Add to Cart
       </Button>
       <div className="socialMedia">
-        <img src={facebook} alt="FBLogo" className="fb sharebutton" />
-        <img
-          src={twitter}
-          alt="TwitterLogo"
-          className="twitter sharebutton"
-          // onClick="location.href='pageurl.html';"
-        />
-        <img
-          src={pinterest}
-          alt="pinterestLogo"
-          className="pinterest sharebutton"
-        />
+        <a href="https://www.facebook.com">
+          <img src={facebook} alt="FBLogo" className="fb sharebutton" />
+        </a>
+        <a href="https://www.twitter.com">
+          <img
+            src={twitter}
+            alt="TwitterLogo"
+            className="twitter sharebutton"
+          />
+        </a>
+        <a href="https://www.pinterest.com">
+          <img
+            src={pinterest}
+            alt="pinterestLogo"
+            className="pinterest sharebutton"
+          />
+        </a>
       </div>
       <ProductSlogan
         slogan={productDetails[2]}
