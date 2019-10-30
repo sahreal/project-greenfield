@@ -47,12 +47,29 @@ class ReviewList extends React.Component {
       });
   }
   handleSortBy(e) {
-    this.setState({ reviewList: [] });
-    this.setState({ pageNum: 1 });
-    this.setState({ sortBy: e.target.value });
-    this.fetchReviews();
+    Promise.resolve(
+      this.setState({ reviewList: [], pageNum: 1, sortBy: e.target.value })
+    )
+      .then(() => {
+        this.fetchReviews();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
+
   render() {
+    if (this.props.filterOn) {
+      var allReviews = this.props.reviewList;
+      var filterReviewList = [];
+      for (let i = 0; i < this.props.filterArray.length; i++) {
+        let filterR = allReviews.filter(review => {
+          return review.rating + "" === this.props.filterArray[i];
+        });
+        filterReviewList = [...filterReviewList, ...filterR];
+      }
+      console.log("filterlist", filterReviewList);
+    }
     return (
       <div>
         <div>
@@ -64,9 +81,13 @@ class ReviewList extends React.Component {
           </select>
         </div>
         <div className="review-reviewList">
-          {this.state.reviewList.map((review, i) => {
-            return <ReviewEntry review={review} key={review.review_id} />;
-          })}
+          {this.props.filterOn
+            ? filterReviewList.map(review => {
+                return <ReviewEntry review={review} key={review.review_id} />;
+              })
+            : this.state.reviewList.map(review => {
+                return <ReviewEntry review={review} key={review.review_id} />;
+              })}
         </div>
         <div>
           <Grid container justify="flex-start">

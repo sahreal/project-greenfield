@@ -1,7 +1,12 @@
 import React from "react";
 import RatingBreakdownEntry from "./RatingBreakdownEntry.jsx";
 
-const RatingBreakdown = ({ metaData }) => {
+const RatingBreakdown = ({
+  metaData,
+  handleClickRating,
+  handleClearFilter,
+  filterOn
+}) => {
   let totalRatings = Object.values(metaData.ratings).reduce(
     (partial_sum, a) => partial_sum + a,
     0
@@ -9,6 +14,20 @@ const RatingBreakdown = ({ metaData }) => {
 
   return (
     <div>
+      <p>Rating Breakdown</p>
+      {filterOn ? (
+        <div className="review-filter">
+          Filters have been applied{" "}
+          <span
+            className="remove-rating-filter"
+            onClick={() => {
+              handleClearFilter();
+            }}
+          >
+            remove all filters
+          </span>
+        </div>
+      ) : null}
       {Object.keys(metaData.ratings).map(rating => {
         return (
           <RatingBreakdownEntry
@@ -16,6 +35,7 @@ const RatingBreakdown = ({ metaData }) => {
             percentage={metaData.ratings[rating] / totalRatings}
             numOfRating={metaData.ratings[rating]}
             key={rating}
+            handleClickRating={handleClickRating}
           />
         );
       })}

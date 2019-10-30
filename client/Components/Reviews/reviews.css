@@ -35,3 +35,31 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.remove-rating-filter {
+  text-decoration: underline;
+  color: grey;
+  cursor: pointer;
+}
+.review-filter {
+  margin-bottom: 15px;
+  font-style: italic;
+}
+.review-helpful-yes {
+  text-decoration: underline;
+  color: grey;
+  cursor: pointer;
+}
+.review-helpful-count {
+  color: grey;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.review-report {
+  text-decoration: underline;
+  color: grey;
+  cursor: pointer;
+}
+.review-rating-factor {
+  width: 75%;
+}
