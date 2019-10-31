@@ -1,24 +1,32 @@
 import React from "react";
 
 import QuestionAnswerCard from "../QuestionAnswerCard/QuestionAnswerCard.jsx";
+import QuestionModal from "../QuestionModal/QuestionModal.jsx";
 
 export default class QuestionAnswerList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       // isClicked: false,
-      questionLimit: 4
+      questionLimit: 4,
+      modal: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   handleClick() {
     this.setState({ questionLimit: this.state.questionLimit + 2 });
   }
 
+  toggleModal() {
+    this.setState({ modal: !this.state.modal });
+  }
+
   render() {
     return (
       <div className="QuestionAnswerList-container">
+        <QuestionModal show={this.state.modal} toggleModal={this.toggleModal} />
         {this.props.questions
           .sort((a, b) => b.question_helpfulness - a.question_helpfulness)
           .map((question, index) =>
@@ -65,7 +73,11 @@ export default class QuestionAnswerList extends React.Component {
             onClick={this.handleClick}
           />
         ) : null}
-        <input type="button" value="ADD A QUESTION + " />
+        <input
+          type="button"
+          value="ADD A QUESTION + "
+          onClick={this.toggleModal}
+        />
       </div>
     );
   }
