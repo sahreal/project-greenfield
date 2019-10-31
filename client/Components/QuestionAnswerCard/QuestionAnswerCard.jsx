@@ -1,4 +1,9 @@
 import React from "react";
+import AnswerModal from "../AnswerModal/AnswerModal.jsx";
+
+import Cookies from "js-cookie";
+import axios from "axios";
+import { Button } from "react-bootstrap";
 // import { question, answer } from "./dummydata";
 
 import "./QuestionAnswerCard.css";
@@ -7,11 +12,14 @@ export default class QuestionAnswerCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false
+      isClicked: false,
+      modal: false
     };
     this.convertDate = this.convertDate.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.displayButton = this.displayButton.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.updateQHelpful = this.updateQHelpful.bind(this);
   }
 
   convertDate(dateString) {
@@ -34,20 +42,64 @@ export default class QuestionAnswerCard extends React.Component {
       Object.keys(this.props.question.answers).length > 2
     ) {
       return (
-        <input
-          type="button"
-          value="Load More Answers"
-          onClick={this.handleClick}
-        />
+        // <input
+        //   type="button"
+        //   value="Load More Answers"
+        //   onClick={this.handleClick}
+        // />
+        <Button size="sm" variant="outline-dark" onClick={this.handleClick}>
+          Load More Answers
+        </Button>
       );
     } else if (this.state.isClicked) {
       return (
-        <input
-          type="button"
-          value="Collaspe Answers"
-          onClick={this.handleClick}
-        />
+        // <input
+        //   type="button"
+        //   value="Collaspe Answers"
+        //   onClick={this.handleClick}
+        // />
+        <Button size="sm" variant="outline-dark" onClick={this.handleClick}>
+          Collapse Answers
+        </Button>
       );
+    }
+  }
+
+  toggleModal() {
+    this.setState({ modal: !this.state.modal });
+  }
+
+  async updateQHelpful(id, count) {
+    try {
+      if (!Cookies.get(`question_${id}_helpfulness`)) {
+        throw new Error();
+      }
+    } catch (e) {
+      await axios.put(`http://18.223.1.30/qa/question/${id}/helpful`);
+      this.setState({ helpfulness: count + 1 });
+      Cookies.set(`question_${id}_helpfulness`, "true");
+    }
+  }
+
+  async updateAHelpful(id, count) {
+    try {
+      if (!Cookies.get(`answer_${id}_helpfulness`)) {
+        throw new Error();
+      }
+    } catch (e) {
+      await axios.put(`http://18.223.1.30/qa/answer/${id}/helpful`);
+      this.setState({ [`answer${id}`]: count + 1 });
+      Cookies.set(`answer_${id}_helpfulness`, "true");
+    }
+  }
+
+  async reportAnswer(id) {
+    try {
+      await axios.put(`http://18.223.1.30/qa/answer/${id}/report`);
+      const answer = document.getElementById(`answer${id}`);
+      answer.remove();
+    } catch (e) {
+      console.error(e.message);
     }
   }
 
@@ -56,13 +108,35 @@ export default class QuestionAnswerCard extends React.Component {
 
     return question ? (
       <div className="QuestionAnswerCard-container">
+        <AnswerModal
+          show={this.state.modal}
+          toggleModal={this.toggleModal}
+          question={question}
+        />
         <div className="QACard-question">
           <p className="text-left">
             <strong>Q: {question.question_body}</strong>
           </p>
           <p className="qacard-helpful text-right">
-            Helpful ? <a>Yes</a>({question.question_helpfulness}) |{" "}
-            <a>Add Answer</a>
+            Helpful ?{" "}
+            <input
+              className="input-helpfulness"
+              type="button"
+              defaultValue="Yes"
+              onClick={() => {
+                this.updateQHelpful(
+                  question.question_id,
+                  question.question_helpfulness
+                );
+              }}
+            />
+            ({this.state.helpfulness || question.question_helpfulness}) |{" "}
+            <input
+              className="add_answer"
+              type="button"
+              defaultValue="Add Answer"
+              onClick={this.toggleModal}
+            />
           </p>
         </div>
         <div className="QACard-answer_outer">
@@ -95,14 +169,32 @@ export default class QuestionAnswerCard extends React.Component {
                     <p>
                       by {question.answers[answer].answerer_name}{" "}
                       {this.convertDate(question.answers[answer].date)} |
-                      Helpful ? <a> Yes </a> (
-                      {question.answers[answer].helpfulness}) | <a> Report </a>
+                      Helpful ?{" "}
+                      <input
+                        className="input-helpfulness"
+                        type="button"
+                        defaultValue="Yes"
+                        onClick={() => {
+                          this.updateAHelpful(
+                            answer,
+                            question.answers[answer].helpfulness
+                          );
+                        }}
+                      />{" "}
+                      (
+                      {this.state[`answer${answer}`] ||
+                        question.answers[answer].helpfulness}
+                      ) | <a> Report </a>
                     </p>
                   </div>
                 );
               } else if (index < 2) {
                 return (
-                  <div key={answer} className="QACard-answer_inner">
+                  <div
+                    key={answer}
+                    className="QACard-answer_inner"
+                    id={`answer${answer}`}
+                  >
                     <p>
                       {index === 0 ? <strong>A: </strong> : null}
                       {question.answers[answer].body}
@@ -125,8 +217,30 @@ export default class QuestionAnswerCard extends React.Component {
                     <p>
                       by {question.answers[answer].answerer_name}{" "}
                       {this.convertDate(question.answers[answer].date)} |
-                      Helpful ? <a> Yes </a> (
-                      {question.answers[answer].helpfulness}) | <a> Report </a>
+                      Helpful ?{" "}
+                      <input
+                        className="input-helpfulness"
+                        type="button"
+                        defaultValue="Yes"
+                        onClick={() => {
+                          this.updateAHelpful(
+                            answer,
+                            question.answers[answer].helpfulness
+                          );
+                        }}
+                      />{" "}
+                      (
+                      {this.state[`answer${answer}`] ||
+                        question.answers[answer].helpfulness}
+                      ) |{" "}
+                      <input
+                        className="report_answer"
+                        type="button"
+                        defaultValue="Report"
+                        onClick={() => {
+                          this.reportAnswer(answer);
+                        }}
+                      />
                     </p>
                   </div>
                 );

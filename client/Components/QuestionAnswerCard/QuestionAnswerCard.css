@@ -1,31 +1,31 @@
-.QuestionAnswerCard-container {
+/* .QuestionAnswerCard-container {
   margin: 10px 0;
   padding: 5px 0;
-}
+} */
 
 .QACard-question {
   display: flex;
   flex-direction: row;
-  margin: 5px 0;
+  /* margin: 5px 0; */
 }
 
 .QACard-question p {
   flex-basis: 100%;
 }
 
-.QACard-answer_outer {
+/* .QACard-answer_outer {
   margin: 5px 0;
   padding: 5px 0;
-}
+} */
 
-.QACard-answer_inner {
+/* .QACard-answer_inner {
   margin: 5px 0;
   padding: 5px 0;
 }
 
 .QACard-answer_inner p {
   margin: 5px 0;
-}
+} */
 
 .answer-photo-container {
   display: flex;
@@ -43,4 +43,25 @@
   width: 100%;
   height: 100%;
   object-fit: fill;
+}
+
+.add_answer {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  /* width: 84px; */
+}
+
+.input-helpfulness {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  /* width: 28px; */
+}
+
+.report_answer {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  /* width: 28px; */
 }
