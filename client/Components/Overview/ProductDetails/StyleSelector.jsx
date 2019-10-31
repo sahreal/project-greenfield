@@ -2,6 +2,7 @@ import React from "react";
 //import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import StyleSelectorItem from "./StyleSelectorItem.jsx";
+import "./productDetails.css";
 import "../../../index.css";
 
 const StyleSelector = ({

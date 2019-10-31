@@ -37,3 +37,14 @@
   position: relative;
   text-decoration: underline;
 }
+
+.style-bubbles-container {
+  display: flex;
+  width: 350px;
+  flex-wrap: wrap;
+  /* grid-row: 1; */
+}
+
+.MuiAvatar-img {
+  margin: 10px !important;
+}

@@ -1,10 +1,78 @@
-.WOW {
-  height: 1%;
-  width: 1%;
+.ImageList {
+  background: black;
+  position: absolute;
+  z-index: 2;
+  margin-right: 50%;
 }
 
-.Carousel {
+.Modal {
+  background: black;
+}
+
+/* .Modal img {
+  margin-left: 20%;
+  margin-right: 20%;
+  position: absolute;
+  z-index: 6;
+  border: 100px solid black;
+  object-fit: contain;
+} */
+
+.slider-img {
   display: flex;
+  background: black;
+  padding: 0px;
   width: 500px;
+  height: 500px;
+  /* This aligns items to the end line on main-axis */
+}
+
+.slider-img img {
   flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  object-fit: cover;
+  flex: 1 100%;
+  /* object-fit: contain; */
+}
+.slider-img img :hover {
+  cursor: pointer;
+}
+
+.HEY img {
+  height: 100%;
+  width: 100%;
+}
+
+.NO {
+  color: red;
+}
+
+.shrink {
+  height: 0px;
+  width: 0px;
+}
+
+.img {
+  height: 150px;
+  width: 200px;
+}
+.close {
+  background-image: url("Close-icon.png");
+  background-repeat: no-repeat;
+  bottom: 418px;
+  display: none;
+  height: 32px;
+  left: 462px;
+  margin-top: -32px;
+  position: relative;
+  width: 32px;
+}
+.expand {
+  bottom: 125px;
+  margin-left: -32px;
+  margin-right: 16px;
+  pointer-events: none;
+  position: relative;
 }
