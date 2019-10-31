@@ -1,9 +1,11 @@
 import React from "react";
 import ReviewEntry from "./ReviewEntry.jsx";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import LoadReview from "./LoadReview.jsx";
 import axios from "axios";
+import { Container, Col, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import "./reviews.css";
+import ReviewModal from "./ReviewModal.jsx";
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -11,12 +13,14 @@ class ReviewList extends React.Component {
     this.state = {
       pageNum: 1,
       sortBy: "relevant",
-      reviewList: []
+      reviewList: [],
+      modalShow: false
     };
     this.handleClickMoreReview = this.handleClickMoreReview.bind(this);
     this.updatePage = this.updatePage.bind(this);
     this.fetchReviews = this.fetchReviews.bind(this);
     this.handleSortBy = this.handleSortBy.bind(this);
+    this.modalOnHide = this.modalOnHide.bind(this);
   }
   componentDidMount() {
     this.fetchReviews();
@@ -57,6 +61,9 @@ class ReviewList extends React.Component {
         console.log(err);
       });
   }
+  modalOnHide() {
+    this.setState({ modalShow: false });
+  }
 
   render() {
     if (this.props.filterOn) {
@@ -70,16 +77,18 @@ class ReviewList extends React.Component {
       }
     }
     return (
-      <div>
-        <div>
-          <p>{this.props.reviewList.length} Reviews, sorted by</p>
-          <select value={this.state.sortBy} onChange={this.handleSortBy}>
-            <option value="relevant">Relevant</option>
-            <option value="helpful">Helpful</option>
-            <option value="newest">Newest</option>
-          </select>
-        </div>
-        <div className="review-reviewList">
+      <Container className="review-list">
+        <Row className="review-sortBy">
+          <Col>
+            <p>{this.props.reviewList.length} Reviews, sorted by</p>
+            <select value={this.state.sortBy} onChange={this.handleSortBy}>
+              <option value="relevant">Relevant</option>
+              <option value="helpful">Helpful</option>
+              <option value="newest">Newest</option>
+            </select>
+          </Col>
+        </Row>
+        <Row className="review-reviewList">
           {this.props.filterOn
             ? filterReviewList.map(review => {
                 return <ReviewEntry review={review} key={review.review_id} />;
@@ -87,20 +96,28 @@ class ReviewList extends React.Component {
             : this.state.reviewList.map(review => {
                 return <ReviewEntry review={review} key={review.review_id} />;
               })}
-        </div>
-        <div>
-          <Grid container justify="flex-start">
-            <Grid item xs={2}>
-              <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
-            </Grid>
-            <Grid item xs={2}>
-              <Button size="small" variant="outlined">
-                Add a Reviews
-              </Button>
-            </Grid>
-          </Grid>
-        </div>
-      </div>
+        </Row>
+        <Row className="review-buttons">
+          <Col xs={3}>
+            <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
+          </Col>
+          <Col x3={3}>
+            <Button
+              size="sm"
+              variant="outline-dark"
+              onClick={() => {
+                this.setState({ modalShow: true });
+              }}
+            >
+              Add a Reviews
+              <ReviewModal
+                show={this.state.modalShow}
+                onHide={this.modalOnHide}
+              />
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

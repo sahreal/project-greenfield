@@ -1,14 +1,14 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import { Button } from "react-bootstrap";
 
 const LoadReview = ({ handleClickMoreReview }) => (
   <div>
     <Button
+      size="sm"
+      variant="outline-dark"
       onClick={() => {
         handleClickMoreReview();
       }}
-      size="small"
-      variant="outlined"
     >
       More Reviews
     </Button>

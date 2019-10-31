@@ -79,3 +79,7 @@
 .review-entry-photo {
   width: 20%;
 }
+.review-reviewList {
+  height: 500px;
+  overflow: auto;
+}
