@@ -3,7 +3,7 @@ import ReviewEntry from "./ReviewEntry.jsx";
 import LoadReview from "./LoadReview.jsx";
 import axios from "axios";
 import { Container, Col, Row } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Button, ButtonToolbar } from "react-bootstrap";
 import "./reviews.css";
 import ReviewModal from "./ReviewModal.jsx";
 
@@ -20,7 +20,6 @@ class ReviewList extends React.Component {
     this.updatePage = this.updatePage.bind(this);
     this.fetchReviews = this.fetchReviews.bind(this);
     this.handleSortBy = this.handleSortBy.bind(this);
-    this.modalOnHide = this.modalOnHide.bind(this);
   }
   componentDidMount() {
     this.fetchReviews();
@@ -61,9 +60,6 @@ class ReviewList extends React.Component {
         console.log(err);
       });
   }
-  modalOnHide() {
-    this.setState({ modalShow: false });
-  }
 
   render() {
     if (this.props.filterOn) {
@@ -102,19 +98,23 @@ class ReviewList extends React.Component {
             <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
           </Col>
           <Col x3={3}>
-            <Button
-              size="sm"
-              variant="outline-dark"
-              onClick={() => {
-                this.setState({ modalShow: true });
-              }}
-            >
-              Add a Reviews
+            <ButtonToolbar>
+              <Button
+                size="sm"
+                variant="outline-dark"
+                onClick={() => {
+                  this.setState({ modalShow: true });
+                }}
+              >
+                Add a Reviews
+              </Button>
               <ReviewModal
                 show={this.state.modalShow}
-                onHide={this.modalOnHide}
+                onHide={() => {
+                  this.setState({ modalShow: false });
+                }}
               />
-            </Button>
+            </ButtonToolbar>
           </Col>
         </Row>
       </Container>

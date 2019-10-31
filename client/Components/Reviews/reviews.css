@@ -83,3 +83,12 @@
   height: 500px;
   overflow: auto;
 }
+.review-choose-rating {
+  width: 200;
+  display: flex;
+  align-items: center;
+}
+.review-star-meaning {
+  margin-left: 10px;
+  font-size: 15px;
+}
