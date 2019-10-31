@@ -20,7 +20,7 @@
 }
 
 .review-username {
-  font-size: 15px;
+  font-size: 18px;
 }
 .review-entry {
   margin: 25px;
@@ -72,4 +72,10 @@
 }
 .rating-amount:hover {
   color: red;
+}
+.review-entry-recommend {
+  font-style: italic;
+}
+.review-entry-photo {
+  width: 20%;
 }

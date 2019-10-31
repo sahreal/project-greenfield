@@ -59,8 +59,6 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    console.log("props", this.props);
-    console.log("filter Array in reviewlist", this.props.filterArray);
     if (this.props.filterOn) {
       var allReviews = this.props.reviewList;
       var filterReviewList = [];
@@ -70,7 +68,6 @@ class ReviewList extends React.Component {
         });
         filterReviewList = [...filterReviewList, ...filterR];
       }
-      console.log("filterlist", filterReviewList);
     }
     return (
       <div>

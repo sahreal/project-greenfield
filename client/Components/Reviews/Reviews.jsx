@@ -20,7 +20,6 @@ class Reviews extends React.Component {
       let new_array = this.state.filterArray.slice();
       new_array.push(star);
       this.setState({ filterArray: new_array });
-      console.log("filterArray after adding", this.state.filterArray);
     }
     if (this.state.filterArray.length === 0) {
       this.setState({ filterOn: false });
