@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import Rating from "@material-ui/lab/Rating";
+import ReviewCharacForm from "./ReviewCharacForm.jsx";
 import "./reviews.css";
 
 class ReviewModal extends React.Component {
@@ -34,6 +35,7 @@ class ReviewModal extends React.Component {
       4: "Good",
       5: "Great"
     };
+
     return (
       <Modal {...this.props} size="lg" centered>
         <Modal.Header closeButton>
@@ -73,7 +75,9 @@ class ReviewModal extends React.Component {
                     onChange={this.handleRecommend}
                   />
                 </Form.Group>
-                <Form.Group>Characterastics chart</Form.Group>
+                <Form.Group>
+                  <ReviewCharacForm />
+                </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control

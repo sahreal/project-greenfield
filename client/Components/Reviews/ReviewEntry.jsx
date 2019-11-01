@@ -22,7 +22,9 @@ class ReviewEntry extends React.Component {
       axios.put(
         `http://18.223.1.30/reviews/helpful/${this.props.review.review_id}`
       );
-      this.setState({ helpful: this.props.review.helpfulness + 1 });
+      this.setState({ helpful: this.props.review.helpfulness + 1 }, () => {
+        console.log(this.state.helpful);
+      });
     }
     this.setState({
       helpfulClicked: true
@@ -90,7 +92,7 @@ class ReviewEntry extends React.Component {
               <span
                 className="review-helpful-yes"
                 onClick={() => {
-                  this.handleClickHelpful;
+                  this.handleClickHelpful();
                 }}
               >
                 Yes

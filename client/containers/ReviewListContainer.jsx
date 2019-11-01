@@ -4,6 +4,7 @@ import ReviewList from "../Components/Reviews/ReviewList";
 let mapStatetoProps = (store, ownProps) => {
   return {
     reviewList: store.reviewList,
+    metaData: store.metaData,
     productId: store.productId,
     filterOn: ownProps.filterOn,
     filterArray: ownProps.filterArray

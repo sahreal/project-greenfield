@@ -63,7 +63,7 @@ class ReviewList extends React.Component {
 
   render() {
     if (this.props.filterOn) {
-      var allReviews = this.props.reviewList;
+      var allReviews = this.props.reviewList.slice();
       var filterReviewList = [];
       for (let i = 0; i < this.props.filterArray.length; i++) {
         let filterR = allReviews.filter(review => {
@@ -109,6 +109,7 @@ class ReviewList extends React.Component {
                 Add a Reviews
               </Button>
               <ReviewModal
+                metadata={this.props.metaData}
                 show={this.state.modalShow}
                 onHide={() => {
                   this.setState({ modalShow: false });
