@@ -1,10 +1,13 @@
 import { connect } from "react-redux";
 import ReviewList from "../Components/Reviews/ReviewList";
 
-let mapStatetoProps = store => {
+let mapStatetoProps = (store, ownProps) => {
+  console.log("list ownProps", ownProps);
   return {
     reviewList: store.reviewList,
-    productId: store.productId
+    productId: store.productId,
+    filterOn: ownProps.filterOn,
+    filterArray: ownProps.filterArray
   };
 };
 

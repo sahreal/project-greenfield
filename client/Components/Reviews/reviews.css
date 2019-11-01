@@ -63,3 +63,13 @@
 .review-rating-factor {
   width: 75%;
 }
+.rating-star {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.rating-star:hover {
+  color: red;
+}
+.rating-amount:hover {
+  color: red;
+}
