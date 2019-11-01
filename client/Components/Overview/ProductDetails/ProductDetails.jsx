@@ -15,6 +15,7 @@ import twitter from "../logos/twitter.svg";
 import Container from "@material-ui/core/Container";
 import Modal from "./Modal.jsx";
 import "./productDetails.css";
+import JumpScroll from "./JumpScroll.jsx";
 
 const useStyles = makeStyles({
   root: {
@@ -48,9 +49,7 @@ const ProductDetails = ({
     <div className="ProductDetails">
       <div className="stars">
         <StarReviewsContainer />
-        <div className="readReviews" onClick={() => console.log("CLICK")}>
-          Read {reviewList.length} Reviews
-        </div>
+        <JumpScroll reviewList={reviewList} />
         <ProductInfo
           productDetails={productDetails}
           productData={productData[styleId]}
@@ -84,6 +83,7 @@ const ProductDetails = ({
           collectInput={collectInput}
           size={size}
           amount={amount}
+          styleId={styleId}
         />
       )}
 

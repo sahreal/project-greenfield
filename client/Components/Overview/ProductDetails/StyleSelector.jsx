@@ -13,7 +13,10 @@ const StyleSelector = ({
 }) => {
   return (
     <div>
-      <div className="StyleSelector"> STYLE > {productData[styleId].name}</div>
+      <div className="StyleSelector">
+        <span className="Style"> STYLE > </span>
+        <span>{productData[styleId].name}</span>
+      </div>
       <Grid container spacing={6}>
         <Grid item xs={6} sm={3}>
           <div className="style-bubbles-container">

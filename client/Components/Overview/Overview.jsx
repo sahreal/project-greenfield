@@ -14,6 +14,7 @@ class Overview extends PureComponent {
       id: 0,
       styleId: 0,
       checkMarker: false,
+      ImageMarker: false,
       showModal: false,
       size: "",
       amount: 0
@@ -24,6 +25,7 @@ class Overview extends PureComponent {
     this.handleStyleChange = this.handleStyleChange.bind(this);
     this.leaveExpand = this.leaveExpand.bind(this);
     this.collectInput = this.collectInput.bind(this);
+    // this.handleImageChange = this.handleImageChange.bind(this);
   }
 
   collectInput(e) {
@@ -39,7 +41,8 @@ class Overview extends PureComponent {
   handleClick(e) {
     this.setState({
       id: Number(e.target.alt),
-      showModal: true
+      showModal: true,
+      ImageMarker: true
     });
   }
 
@@ -49,6 +52,13 @@ class Overview extends PureComponent {
       checkMarker: true
     });
   }
+
+  // handleImageChange(e) {
+  //   this.setState({
+  //     styleId: Number(e.target.alt),
+  //     ImageMarker: true
+  //   });
+  // }
 
   leaveExpand() {
     this.setState({
@@ -61,13 +71,15 @@ class Overview extends PureComponent {
       <div className="Overview">
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Paper style={{ background: "black" }}>
+            <Paper height="100%" width="100%" style={{ background: "black" }}>
               <ImageGalleryContainer
                 id={this.state.id}
                 handleClick={this.handleClick}
+                // handleImageChange={this.handleImageChange}
                 styleId={this.state.styleId}
                 showModal={this.state.showModal}
                 leaveExpand={this.leaveExpand}
+                ImageMarker={this.state.ImageMarker}
               />
             </Paper>
           </Grid>

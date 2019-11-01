@@ -23,6 +23,12 @@ const ImageListEntry = props => {
         src={props.imageThumbnail}
         className={classes.imageList}
         onClick={props.handleClick}
+        style={{
+          cursor: "pointer",
+          boxShadow: "0px 0px 3px 4px white",
+          opacity: 0.9,
+          border: "dotted"
+        }}
       />
     </div>
   );

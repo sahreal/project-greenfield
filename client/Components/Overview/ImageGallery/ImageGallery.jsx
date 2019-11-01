@@ -11,7 +11,9 @@ const ImageGallery = ({
   id,
   styleId,
   showModal,
-  leaveExpand
+  leaveExpand,
+  carouselArrows,
+  ImageMarker
 }) => {
   // console.log(productData[styleId], "LOOOK AT ME GO");
   const modalExpand = showModal ? "shrink" : "HEY";
@@ -35,6 +37,8 @@ const ImageGallery = ({
               <ImageList
                 productData={productData[styleId].photos}
                 handleClick={handleClick}
+                ImageMarker={ImageMarker}
+                styleId={styleId}
                 className="ImageList"
               />
 
@@ -42,7 +46,6 @@ const ImageGallery = ({
                 <ImageGalleryCarousel
                   productData={productData[styleId].photos}
                   id={id}
-                  // className="Carousel"
                   handleClick={handleClick}
                 />
               )}

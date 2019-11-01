@@ -1,16 +1,24 @@
 import React from "react";
 import Slider from "react-slick";
-
 import "./ImageGallery.css";
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
-// import Carousel from "react-image-gallery";
-//import Container from "@material-ui/core/Container";
-
-//import Slider
 
 const ImageCarousel = ({ productData, handleClick, id, showModal }) => {
-  function Arrow(props) {
+  function PrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "black"
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function NextArrow(props) {
     const { className, style, onClick } = props;
     return (
       <div
@@ -28,8 +36,8 @@ const ImageCarousel = ({ productData, handleClick, id, showModal }) => {
   const settings = {
     dots: true,
     arrows: true,
-    nextArrow: <Arrow />,
-    prevArrow: <Arrow />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     accessibility: true,
     infinite: true,
     speed: 500,
@@ -49,6 +57,7 @@ const ImageCarousel = ({ productData, handleClick, id, showModal }) => {
             // style={{ padding: "5px", width: "600px", height: "600px" }}
           >
             <img
+              id="CarouselImg"
               style={{ cursor: "pointer" }}
               src={img.url}
               onClick={handleClick}

@@ -32,7 +32,7 @@ className={classes.selectEmpty}
 <MenuItem value={30}>Thirty</MenuItem> */
 }
 
-const ProductForm = ({ productData, size, amount, collectInput }) => {
+const ProductForm = ({ productData, size, amount, collectInput, styleId }) => {
   const counter = x => {
     let result = [];
     for (let i = 1; i <= x; i++) {
@@ -46,7 +46,7 @@ const ProductForm = ({ productData, size, amount, collectInput }) => {
     //ternary operator if null disable
     <Container>
       <FormControl variant="outlined" color="inherit">
-        {" "}
+        Size:
         <Select
           native
           autoWidth={true}
@@ -65,6 +65,7 @@ const ProductForm = ({ productData, size, amount, collectInput }) => {
         </Select>
       </FormControl>
       <FormControl variant="outlined" color="inherit">
+        Quantity:
         <Select native autoWidth={true} className={classes.root} name="Amount">
           {size === "" ? (
             <option>-</option>
@@ -77,7 +78,9 @@ const ProductForm = ({ productData, size, amount, collectInput }) => {
           )}
         </Select>
       </FormControl>
-      {size !== "" ? <Modal size={size} amount={amount} /> : null}
+      {size !== "" ? (
+        <Modal size={size} amount={amount} styleId={styleId} />
+      ) : null}
     </Container>
   );
 };

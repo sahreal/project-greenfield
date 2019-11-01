@@ -36,6 +36,7 @@
   display: inline-block;
   position: relative;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .style-bubbles-container {
@@ -47,4 +48,26 @@
 
 .MuiAvatar-img {
   margin: 10px !important;
+}
+
+.Pname {
+  font-weight: bold;
+}
+
+.Category {
+  font-weight: bold;
+}
+
+.slogan {
+  font-weight: bold;
+}
+
+.Style {
+  font-weight: bold;
+}
+
+.Xbutton {
+  top: 0;
+  right: 0;
+  position: absolute;
 }

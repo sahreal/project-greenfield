@@ -31,7 +31,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleModal({ showModal, img, size, amount }) {
+export default function SimpleModal({
+  productData,
+  showModal,
+  img,
+  size,
+  amount,
+  styleId
+}) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -45,6 +52,8 @@ export default function SimpleModal({ showModal, img, size, amount }) {
     setOpen(false);
   };
 
+  // console.log(productData.photos.length, "HELP");
+  // const styleImage = productData.photos[1].thumbnail_url;
   return (
     <div>
       <Button
@@ -65,11 +74,13 @@ export default function SimpleModal({ showModal, img, size, amount }) {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Hey Dumb Idiot</h2>
+          <h2 id="simple-modal-title">Your Cart</h2>
           <p id="simple-modal-description">Dont forget to buy your clothes!</p>
           <div>Size: {size} </div>
           <div>Amount: {amount} </div>
-          <div>
+
+          <SimpleModal />
+          <div className="Xbutton">
             <Button
               type="button"
               variant="outlined"
@@ -81,7 +92,6 @@ export default function SimpleModal({ showModal, img, size, amount }) {
               X
             </Button>
           </div>
-          <SimpleModal />
         </div>
       </Modal>
     </div>
