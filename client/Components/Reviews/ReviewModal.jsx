@@ -10,16 +10,21 @@ class ReviewModal extends React.Component {
     this.state = {
       email: "",
       hover: 0,
-      recommended: 1
+      recommended: 1,
+      characteristics: {}
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStarHoverChange = this.handleStarHoverChange.bind(this);
+    this.handleRecommend = this.handleRecommend.bind(this);
   }
   handleInputChange(e) {
     this.setState({ email: e.target.value });
   }
   handleStarHoverChange(newHover) {
     this.setState({ hover: newHover });
+  }
+  handleRecommend(e) {
+    this.setState({ recommended: e.target.value });
   }
   render() {
     const labels = {
@@ -56,7 +61,8 @@ class ReviewModal extends React.Component {
                     label="Yes"
                     value={1}
                     type="radio"
-                    name="recommend-yes"
+                    name="recommend"
+                    onChange={this.handleRecommend}
                   />
                   <Form.Check
                     inline
@@ -64,9 +70,10 @@ class ReviewModal extends React.Component {
                     value={0}
                     type="radio"
                     name="recommend"
-                    id="recommend-no"
+                    onChange={this.handleRecommend}
                   />
                 </Form.Group>
+                <Form.Group>Characterastics chart</Form.Group>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control

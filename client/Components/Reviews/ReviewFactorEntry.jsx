@@ -63,7 +63,7 @@ const ReviewFactorEntry = ({ factor, factor_name }) => {
       <div>{factor_name}</div>
       <div>
         <FactorSlider
-          value={Number(factor.value).toFixed(1)}
+          value={Number(factor.value)}
           max={5}
           step={0.1}
           marks={marks}

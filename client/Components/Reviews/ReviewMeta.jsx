@@ -15,7 +15,7 @@ const ReviewMeta = ({
     (partial_sum, a) => partial_sum + a,
     0
   );
-
+  console.log(metaData);
   return (
     <div className="review-meta">
       <div className="review-overview">
