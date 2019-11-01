@@ -13,9 +13,9 @@ const ImageList = ({ productData, handleClick, ImageMarker, styleId }) => {
           aria-label="spacing"
           row={false}
           style={{
-            zIndex: "2",
+            zIndex: "4",
             position: "absolute",
-            left: 2
+            left: -120
           }}
         >
           {productData.length !== 0

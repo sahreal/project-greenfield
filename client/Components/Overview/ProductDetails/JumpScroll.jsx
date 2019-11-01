@@ -25,7 +25,7 @@ import {
 function JumpScroll({ reviewList }) {
   return (
     <div className="readReviews">
-      <div onClick={() => scroll.scrollTo(500)}>
+      <div onClick={() => scroll.scrollTo(1500)}>
         Read {reviewList.length} Reviews
       </div>
     </div>

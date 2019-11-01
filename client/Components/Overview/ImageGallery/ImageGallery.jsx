@@ -12,12 +12,16 @@ const ImageGallery = ({
   styleId,
   showModal,
   leaveExpand,
-  carouselArrows,
   ImageMarker
 }) => {
   // console.log(productData[styleId], "LOOOK AT ME GO");
-  const modalExpand = showModal ? "shrink" : "HEY";
-  const disappear = showModal ? "NO" : "shrink";
+  //                               //true   //false
+  // const modalExpand = showModal ? "shrink" : "expand";
+  // const disappear = showModal ? "expand" : "shrink";
+
+  const showHideClassName = showModal
+    ? "modal display-block"
+    : "modal display-none";
 
   return (
     <div className="Image">
@@ -26,27 +30,29 @@ const ImageGallery = ({
         productData[styleId].photos[id].thumbnail_url === null ? (
           <img src={notFound} />
         ) : (
-          <div className={modalExpand}>
+          <div className="shrink">
             {showModal ? (
-              <img
-                src={productData[styleId].photos[id].url}
-                onClick={leaveExpand}
-              />
+              <div className={showHideClassName}>
+                <img
+                  className="modal-main2"
+                  src={productData[styleId].photos[id].url}
+                  onClick={leaveExpand}
+                />
+              </div>
             ) : null}
-            <div classname={disappear}>
+            <div>
               <ImageList
                 productData={productData[styleId].photos}
                 handleClick={handleClick}
                 ImageMarker={ImageMarker}
                 styleId={styleId}
-                className="ImageList"
               />
 
               {productData[styleId].photos[id].url === null ? null : (
                 <ImageGalleryCarousel
                   productData={productData[styleId].photos}
                   id={id}
-                  handleClick={handleClick}
+                  // handleClick={handleClick}
                 />
               )}
             </div>
