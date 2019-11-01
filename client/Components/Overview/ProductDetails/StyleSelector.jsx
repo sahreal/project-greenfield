@@ -2,6 +2,7 @@ import React from "react";
 //import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import StyleSelectorItem from "./StyleSelectorItem.jsx";
+import "./productDetails.css";
 import "../../../index.css";
 
 const StyleSelector = ({
@@ -12,7 +13,10 @@ const StyleSelector = ({
 }) => {
   return (
     <div>
-      <div className="StyleSelector"> STYLE > {productData[styleId].name}</div>
+      <div className="StyleSelector">
+        <span className="Style"> STYLE > </span>
+        <span>{productData[styleId].name}</span>
+      </div>
       <Grid container spacing={6}>
         <Grid item xs={6} sm={3}>
           <div className="style-bubbles-container">

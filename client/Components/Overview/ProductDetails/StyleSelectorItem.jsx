@@ -2,12 +2,14 @@ import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import checkMark from "../logos/check.svg";
+import "./productDetails.css";
 
 const useStyles = makeStyles({
   bigAvatar: {
     margin: 10,
     width: 60,
-    height: 60
+    height: 60,
+    cursor: "pointer"
   }
 });
 
