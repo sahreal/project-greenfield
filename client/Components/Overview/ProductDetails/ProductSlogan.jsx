@@ -1,5 +1,4 @@
 import React from "react";
-import "./productDetails";
 
 const ProductSlogan = ({ slogan, description }) => {
   return (

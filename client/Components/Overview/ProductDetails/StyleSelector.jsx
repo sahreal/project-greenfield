@@ -19,20 +19,25 @@ const StyleSelector = ({
       </div>
       <Grid container spacing={6}>
         <Grid item xs={6} sm={3}>
-          <div className="style-bubbles-container">
-            {productData.map((image, index) => {
-              return (
-                <StyleSelectorItem
-                  key={`a${index}`}
-                  styleId={styleId}
-                  index={index}
-                  imageThumbnail={image.photos[0].thumbnail_url}
-                  handleStyleChange={handleStyleChange}
-                  checkMarker={checkMarker}
-                />
-              );
-            })}
-          </div>
+          {productData[styleId].photos.length === 0 ||
+          productData[styleId].photos[0].thumbnail_url === null ? (
+            <div className="noImages">No Images Found</div>
+          ) : (
+            <div className="style-bubbles-container">
+              {productData.map((image, index) => {
+                return (
+                  <StyleSelectorItem
+                    key={`a${index}`}
+                    styleId={styleId}
+                    index={index}
+                    imageThumbnail={image.photos[0].thumbnail_url}
+                    handleStyleChange={handleStyleChange}
+                    checkMarker={checkMarker}
+                  />
+                );
+              })}
+            </div>
+          )}
         </Grid>
       </Grid>
     </div>

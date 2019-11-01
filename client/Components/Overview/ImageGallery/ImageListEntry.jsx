@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     margin: 5,
     width: 60,
     height: 60,
-    borderRadius: 0
+    borderRadius: 10
   }
 });
 
@@ -26,8 +26,7 @@ const ImageListEntry = props => {
         style={{
           cursor: "pointer",
           boxShadow: "0px 0px 3px 4px white",
-          opacity: 0.9,
-          border: "dotted"
+          opacity: 0.9
         }}
       />
     </div>

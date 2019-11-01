@@ -71,3 +71,8 @@
   right: 0;
   position: absolute;
 }
+
+.noImages {
+  font-weight: bolder;
+  color: red;
+}

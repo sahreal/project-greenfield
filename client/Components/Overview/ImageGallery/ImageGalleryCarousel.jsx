@@ -43,25 +43,18 @@ const ImageCarousel = ({ productData, handleClick, id, showModal }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "100px"
+    centerMode: false
+    // focusOnSelect: true
+    // adaptiveHeight: true,
+    // centerPadding: "10px"
   };
 
   return (
     <div className="slider">
       <Slider {...settings}>
         {productData.map((img, index) => (
-          <div
-            className="slider-img"
-            key={`a${index}`}
-            // style={{ padding: "5px", width: "600px", height: "600px" }}
-          >
-            <img
-              id="CarouselImg"
-              style={{ cursor: "pointer" }}
-              src={img.url}
-              onClick={handleClick}
-            />
+          <div className="DONTDELETEMESAHAR">
+            <img key={index} src={img.url} onClick={handleClick} />
           </div>
         ))}
       </Slider>

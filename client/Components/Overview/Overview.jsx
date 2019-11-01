@@ -71,7 +71,7 @@ class Overview extends PureComponent {
       <div className="Overview">
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Paper height="100%" width="100%" style={{ background: "black" }}>
+            <Paper style={{ background: "black" }}>
               <ImageGalleryContainer
                 id={this.state.id}
                 handleClick={this.handleClick}
