@@ -7,7 +7,11 @@ const QuestionModal = ({ toggleModal, show }) => {
     <div className={showHideClassName}>
       <section className="modal-main">
         <h1>Ask Your Question</h1>
-        <h2>{`About the [PRODUCT NAME]`}</h2>
+        <h2>{`About the ${
+          document.getElementById("ProductName")
+            ? document.getElementById("ProductName").innerText
+            : null
+        }`}</h2>
         <input
           className="close-modal"
           type="button"

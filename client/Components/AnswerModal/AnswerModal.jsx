@@ -7,7 +7,9 @@ const AnswerModal = ({ toggleModal, show, question }) => {
     <div className={showHideClassName}>
       <section className="modal-main">
         <h1>Submit Your Answer</h1>
-        <h2>{`[Product Name Here]: ${question.question_body}`}</h2>
+        <h2>{`${document.getElementById("ProductName").innerText}: ${
+          question.question_body
+        }`}</h2>
         <input
           className="close-modal"
           type="button"
