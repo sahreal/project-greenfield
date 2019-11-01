@@ -1,5 +1,4 @@
 import React from "react";
-//import getProductData from "../../../actions/Overview/getProductData";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import "./ImageGallery.css";
@@ -9,25 +8,23 @@ const useStyles = makeStyles({
     margin: 5,
     width: 60,
     height: 60,
-    borderRadius: 10
+    borderRadius: 10,
+    cursor: "pointer",
+    boxShadow: "0px 0px 3px 4px white",
+    opacity: 0.9
   }
 });
 
-const ImageListEntry = props => {
+const ImageListEntry = ({ imageThumbnail, handleClick, index }) => {
   const classes = useStyles();
 
   return (
     <div>
       <Avatar
-        alt={props.index.toString()}
-        src={props.imageThumbnail}
+        alt={index.toString()}
+        src={imageThumbnail}
         className={classes.imageList}
-        onClick={props.handleClick}
-        style={{
-          cursor: "pointer",
-          boxShadow: "0px 0px 3px 4px white",
-          opacity: 0.9
-        }}
+        onClick={handleClick}
       />
     </div>
   );
