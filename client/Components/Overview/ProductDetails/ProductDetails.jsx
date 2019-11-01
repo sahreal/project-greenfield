@@ -1,6 +1,5 @@
 import React from "react";
 import StyleSelectorContainer from "../../../containers/StyleSelectorContainer.jsx";
-//import StyleSelector from "./StyleSelector";
 import StarReviewsContainer from "../../../containers/StarReviewsContainer";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -86,7 +85,6 @@ const ProductDetails = ({
           styleId={styleId}
         />
       )}
-
       <div className="socialMedia">
         <a href="https://www.facebook.com">
           <img src={facebook} alt="FBLogo" className="fb sharebutton" />
@@ -113,7 +111,7 @@ const ProductDetails = ({
     </div>
   ) : (
     <div>
-      <h1>Loading</h1>
+      <h1>Loading...</h1>
     </div>
   );
 };

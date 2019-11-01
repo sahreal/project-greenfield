@@ -18,18 +18,15 @@ class Overview extends PureComponent {
       showModal: false,
       size: "",
       amount: 0
-      //   noImage: false
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleStyleChange = this.handleStyleChange.bind(this);
     this.leaveExpand = this.leaveExpand.bind(this);
     this.collectInput = this.collectInput.bind(this);
-    // this.handleImageChange = this.handleImageChange.bind(this);
   }
 
   collectInput(e) {
-    console.log(e.target.value, "TARGET");
     if (typeof e.target.value === "number") {
       this.setState({ amount: e.target.value });
     }
@@ -53,13 +50,6 @@ class Overview extends PureComponent {
     });
   }
 
-  // handleImageChange(e) {
-  //   this.setState({
-  //     styleId: Number(e.target.alt),
-  //     ImageMarker: true
-  //   });
-  // }
-
   leaveExpand() {
     this.setState({
       showModal: false
@@ -75,7 +65,6 @@ class Overview extends PureComponent {
               <ImageGalleryContainer
                 id={this.state.id}
                 handleClick={this.handleClick}
-                // handleImageChange={this.handleImageChange}
                 styleId={this.state.styleId}
                 showModal={this.state.showModal}
                 leaveExpand={this.leaveExpand}
@@ -105,13 +94,3 @@ class Overview extends PureComponent {
 }
 
 export default Overview;
-
-{
-  /* <a class="lightbox" href="#dog">
-   <img src="http://i.huffpost.com/gen/749263/original.jpg"/>
-</a> 
-<div class="lightbox-target" id="dog">
-   <img src="http://i.huffpost.com/gen/749263/original.jpg"/>
-   <a class="lightbox-close" href="#"></a>
-</div> */
-}

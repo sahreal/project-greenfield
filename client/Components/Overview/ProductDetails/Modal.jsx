@@ -52,8 +52,6 @@ export default function SimpleModal({
     setOpen(false);
   };
 
-  // console.log(productData.photos.length, "HELP");
-  // const styleImage = productData.photos[1].thumbnail_url;
   return (
     <div>
       <Button

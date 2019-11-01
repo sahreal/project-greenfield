@@ -45,5 +45,3 @@ const StyleSelector = ({
 };
 
 export default StyleSelector;
-
-// container justify="center" alignItems="center"

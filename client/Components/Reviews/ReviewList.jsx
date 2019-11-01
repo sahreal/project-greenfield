@@ -97,10 +97,10 @@ class ReviewList extends React.Component {
               })}
         </Row>
         <Row className="review-buttons mt-5">
-          <Col xs={2}>
+          <Col xs={3}>
             <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
           </Col>
-          <Col x3={2}>
+          <Col x3={3}>
             <ButtonToolbar>
               <Button
                 size="md"

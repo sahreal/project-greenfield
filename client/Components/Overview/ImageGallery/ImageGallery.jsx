@@ -11,14 +11,10 @@ const ImageGallery = ({
   id,
   styleId,
   showModal,
-  leaveExpand,
-  ImageMarker
+  leaveExpand
 }) => {
-  // console.log(productData[styleId], "LOOOK AT ME GO");
-  //                               //true   //false
-  // const modalExpand = showModal ? "shrink" : "expand";
-  // const disappear = showModal ? "expand" : "shrink";
-
+  //OnClick showModal(from the state in parent Component) will switch between true/false,
+  //which returns a string, that is put into the div's className that expands the photo clicked on thumbnail
   const showHideClassName = showModal
     ? "modal display-block"
     : "modal display-none";
@@ -44,7 +40,6 @@ const ImageGallery = ({
               <ImageList
                 productData={productData[styleId].photos}
                 handleClick={handleClick}
-                ImageMarker={ImageMarker}
                 styleId={styleId}
               />
 
@@ -52,7 +47,6 @@ const ImageGallery = ({
                 <ImageGalleryCarousel
                   productData={productData[styleId].photos}
                   id={id}
-                  // handleClick={handleClick}
                 />
               )}
             </div>
