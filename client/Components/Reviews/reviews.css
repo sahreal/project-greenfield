@@ -82,6 +82,7 @@
 }
 .review-entry-recommend {
   font-style: italic;
+  font-size: 14px;
 }
 .review-entry-photo {
   width: 20%;
@@ -104,6 +105,7 @@
 }
 .review-label {
   font-size: 14px;
+  font-weight: bold;
 }
 .review-radio-check {
   font-size: 14px;
@@ -126,13 +128,19 @@
   text-decoration: underline;
 }
 
-.review-sortBy {
-  font-weight: bold;
-}
 .review-entry-date {
   font-size: 14px;
   color: grey;
 }
 .review-body {
   font-size: 14px;
+}
+.review-radio-check {
+  display: block;
+  margin: auto;
+}
+.charac-form {
+  align-items: baseline;
+  text-align: center;
+  margin-bottom: 2px;
 }

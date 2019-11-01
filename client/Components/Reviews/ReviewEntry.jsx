@@ -84,7 +84,7 @@ class ReviewEntry extends React.Component {
             </Col>
           ) : null}
         </Row>
-        <Row>{this.props.review.response ? <div>Response:</div> : null}</Row>
+        {/* <Row>{this.props.review.response ? <div>Response:</div> : null}</Row> */}
         <Row className="mt-3">
           <Col xs={2}>
             <div className="review-helpful">

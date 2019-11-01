@@ -1,13 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { Row, Col, Button } from "react-bootstrap";
-import {
-  Radio,
-  RadioGroup,
-  FormLabel,
-  FormControlLabel,
-  FormControl
-} from "@material-ui/core/";
 import "./reviews.css";
 
 const characLabels = {
@@ -58,23 +51,25 @@ const characLabels = {
 const ReviewCharacForm = ({ handleSelectCharac }) => {
   return Object.keys(characLabels).map(charac => {
     return (
-      <Row>
+      <Row className="charac-form">
         <Col>
-          <div className="review-text">{charac}</div>
+          <div className="review-text review-label">{charac}</div>
         </Col>
         {[1, 2, 3, 4, 5].map(value => {
           return (
             <Col>
-              <input
-                className="review-radio-check"
-                value={value}
-                type="radio"
-                name={charac}
-                onChange={e => {
-                  handleSelectCharac(e);
-                }}
-              />
-              <label className="review-text">{value}</label>
+              <label className="review-text">
+                {characLabels[charac][value]}
+                <input
+                  className="review-radio-check"
+                  value={value}
+                  type="radio"
+                  name={charac}
+                  onChange={e => {
+                    handleSelectCharac(e);
+                  }}
+                />
+              </label>
             </Col>
           );
         })}

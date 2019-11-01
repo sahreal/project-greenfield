@@ -12,6 +12,7 @@ class Reviews extends React.Component {
   }
   handleClickRating(star) {
     let idx = this.state.filterArray.indexOf(star);
+    console.log(idx);
     if (idx >= 0) {
       let new_filter_array = this.state.filterArray.slice();
       new_filter_array.splice(idx, 1);
@@ -19,7 +20,10 @@ class Reviews extends React.Component {
     } else {
       let new_array = this.state.filterArray.slice();
       new_array.push(star);
-      this.setState({ filterArray: new_array });
+      console.log("add new filter", new_array);
+      this.setState({ filterArray: new_array, filterOn: true }, () => {
+        console.log(this.state.filterArray, this.state.filterOn);
+      });
     }
     if (this.state.filterArray.length === 0) {
       this.setState({ filterOn: false });

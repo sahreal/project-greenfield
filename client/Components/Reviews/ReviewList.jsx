@@ -50,26 +50,25 @@ class ReviewList extends React.Component {
       });
   }
   handleSortBy(e) {
-    Promise.resolve(
-      this.setState({ reviewList: [], pageNum: 1, sortBy: e.target.value })
-    )
-      .then(() => {
+    this.setState(
+      { reviewList: [], pageNum: 1, sortBy: e.target.value },
+      () => {
         this.fetchReviews();
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      }
+    );
   }
 
   render() {
     if (this.props.filterOn) {
-      var allReviews = this.props.reviewList.slice();
+      console.log("inside reviewlist", this.props.filterArray);
+      var allReviews = this.props.reviewList;
       var filterReviewList = [];
       for (let i = 0; i < this.props.filterArray.length; i++) {
         let filterR = allReviews.filter(review => {
           return review.rating + "" === this.props.filterArray[i];
         });
         filterReviewList = [...filterReviewList, ...filterR];
+        console.log(filterReviewList);
       }
     }
     return (

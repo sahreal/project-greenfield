@@ -15,7 +15,7 @@ class ReviewModal extends React.Component {
       reviewBody: "",
       nickName: "",
       hover: 0,
-      recommended: 1,
+      recommended: true,
       characteristics: {}
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -49,25 +49,24 @@ class ReviewModal extends React.Component {
     for (let key in this.state.characteristics) {
       if (this.props.metadata.characteristics[key]) {
         let charId = this.props.metadata.characteristics[key]["id"];
-        characToAdd[charId] = this.state.characteristics[key];
+        characToAdd[charId] = Number(this.state.characteristics[key]);
       }
     }
     let new_review = {
-      rating: this.state.hover,
+      rating: Number(this.state.hover),
       summary: this.state.reviewSummary,
       body: this.state.reviewBody,
-      recommend: this.state.recommended,
+      recommend: JSON.parse(this.state.recommended),
       name: this.state.nickName,
       email: this.state.email,
       characteristics: characToAdd,
-      photos: []
+      photos: [""]
     };
     console.log(new_review);
-    console.log(this.props.productid);
     axios
       .post(`http://18.223.1.30/reviews/${this.props.productid}`, new_review)
-      .then(response => {
-        console.log(response);
+      .then(() => {
+        this.props.onHide();
       });
   }
   render() {
