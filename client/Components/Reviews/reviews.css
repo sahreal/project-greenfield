@@ -4,29 +4,34 @@
 .review-name-and-date {
   float: right;
 }
+.review-meta {
+  padding-left: 40px;
+}
 .review-overview {
   display: inline-block;
 }
 .review-avg-rating-number {
   display: inline-block;
-  font-size: 80px;
+  font-size: 60px;
 }
 .review-avg-rating-star {
   display: inline-block;
   margin: auto;
 }
 .reviews {
-  margin: 20px;
+  margin: 50px;
 }
 
 .review-username {
   font-size: 18px;
 }
 .review-entry {
-  margin: 25px;
+  border-bottom: solid 1px lightgrey;
 }
 .review-title {
   font-size: 20px;
+  padding-left: 40px;
+  margin-bottom: 20px;
 }
 .progress-bar {
   height: 20px;
@@ -34,6 +39,7 @@
 .review-recommended {
   margin-top: 20px;
   margin-bottom: 20px;
+  font-style: italic;
 }
 
 .remove-rating-filter {
@@ -62,6 +68,7 @@
 }
 .review-rating-factor {
   width: 75%;
+  margin-top: 20px;
 }
 .rating-star {
   cursor: pointer;
@@ -75,6 +82,7 @@
 }
 .review-entry-recommend {
   font-style: italic;
+  font-size: 14px;
 }
 .review-entry-photo {
   width: 20%;
@@ -97,6 +105,7 @@
 }
 .review-label {
   font-size: 14px;
+  font-weight: bold;
 }
 .review-radio-check {
   font-size: 14px;
@@ -109,4 +118,29 @@
 }
 .review-charac {
   display: flex;
+}
+.review-rating-factor {
+  line-height: 1em;
+}
+.sortBy-select {
+  border: none;
+  background: transparent;
+  text-decoration: underline;
+}
+
+.review-entry-date {
+  font-size: 14px;
+  color: grey;
+}
+.review-body {
+  font-size: 14px;
+}
+.review-radio-check {
+  display: block;
+  margin: auto;
+}
+.charac-form {
+  align-items: baseline;
+  text-align: center;
+  margin-bottom: 2px;
 }

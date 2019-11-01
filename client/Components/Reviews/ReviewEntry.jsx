@@ -43,29 +43,29 @@ class ReviewEntry extends React.Component {
   render() {
     return (
       <Container className="review-entry">
-        <Row>
+        <Row className="mt-3">
           <Col className="review-username">
             <AccountCircleIcon /> {this.props.review.reviewer_name}
           </Col>
         </Row>
-        <Row>
+        <Row className="mt-1">
           <Col sm={3} lg={2}>
             <StarReviews avg_rating={this.props.review.rating} />
           </Col>
           <Col sm={6} lg={8}>
             <div className="review-summary">{this.props.review.summary}</div>
           </Col>
-          <Row>
-            <Col>
-              {new Date(this.props.review.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric"
-              })}
-            </Col>
-          </Row>
         </Row>
         <Row>
+          <Col className="review-entry-date">
+            {new Date(this.props.review.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric"
+            })}
+          </Col>
+        </Row>
+        <Row className="review-body">
           <Col>{this.props.review.body}</Col>
         </Row>
         <Row>
@@ -77,16 +77,16 @@ class ReviewEntry extends React.Component {
             );
           })}
         </Row>
-        <Row>
+        <Row className="mt-3">
           {this.props.review.recommend ? (
             <Col className="review-entry-recommend">
               I recommend this product
             </Col>
           ) : null}
         </Row>
-        <Row>{this.props.review.response ? <div>Response:</div> : null}</Row>
-        <Row>
-          <Col xs={3}>
+        {/* <Row>{this.props.review.response ? <div>Response:</div> : null}</Row> */}
+        <Row className="mt-3">
+          <Col xs={2}>
             <div className="review-helpful">
               Helpful?{" "}
               <span
@@ -104,7 +104,7 @@ class ReviewEntry extends React.Component {
               </span>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col xs={2}>
             <div
               className="review-report"
               onClick={() => {

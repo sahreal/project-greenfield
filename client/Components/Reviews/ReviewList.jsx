@@ -50,34 +50,37 @@ class ReviewList extends React.Component {
       });
   }
   handleSortBy(e) {
-    Promise.resolve(
-      this.setState({ reviewList: [], pageNum: 1, sortBy: e.target.value })
-    )
-      .then(() => {
+    this.setState(
+      { reviewList: [], pageNum: 1, sortBy: e.target.value },
+      () => {
         this.fetchReviews();
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      }
+    );
   }
 
   render() {
     if (this.props.filterOn) {
-      var allReviews = this.props.reviewList.slice();
+      console.log("inside reviewlist", this.props.filterArray);
+      var allReviews = this.props.reviewList;
       var filterReviewList = [];
       for (let i = 0; i < this.props.filterArray.length; i++) {
         let filterR = allReviews.filter(review => {
           return review.rating + "" === this.props.filterArray[i];
         });
         filterReviewList = [...filterReviewList, ...filterR];
+        console.log(filterReviewList);
       }
     }
     return (
-      <Container className="review-list">
+      <div className="review-list">
         <Row className="review-sortBy">
           <Col>
             <p>{this.props.reviewList.length} Reviews, sorted by</p>
-            <select value={this.state.sortBy} onChange={this.handleSortBy}>
+            <select
+              value={this.state.sortBy}
+              onChange={this.handleSortBy}
+              className="sortBy-select"
+            >
               <option value="relevant">Relevant</option>
               <option value="helpful">Helpful</option>
               <option value="newest">Newest</option>
@@ -93,14 +96,14 @@ class ReviewList extends React.Component {
                 return <ReviewEntry review={review} key={review.review_id} />;
               })}
         </Row>
-        <Row className="review-buttons">
-          <Col xs={3}>
+        <Row className="review-buttons mt-5">
+          <Col xs={2}>
             <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
           </Col>
-          <Col x3={3}>
+          <Col x3={2}>
             <ButtonToolbar>
               <Button
-                size="sm"
+                size="md"
                 variant="outline-dark"
                 onClick={() => {
                   this.setState({ modalShow: true });
@@ -119,7 +122,7 @@ class ReviewList extends React.Component {
             </ButtonToolbar>
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

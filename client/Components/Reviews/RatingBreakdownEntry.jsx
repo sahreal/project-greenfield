@@ -9,7 +9,7 @@ const RatingBreakdownEntry = ({
   handleClickRating
 }) => (
   <div
-    className="row rating-breakdown-entry"
+    className="row rating-breakdown-entry mt-3"
     onClick={() => {
       handleClickRating(rating);
     }}

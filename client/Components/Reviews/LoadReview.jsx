@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 const LoadReview = ({ handleClickMoreReview }) => (
   <div>
     <Button
-      size="sm"
+      size="md"
       variant="outline-dark"
       onClick={() => {
         handleClickMoreReview();

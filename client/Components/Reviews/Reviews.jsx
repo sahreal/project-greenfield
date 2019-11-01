@@ -12,6 +12,7 @@ class Reviews extends React.Component {
   }
   handleClickRating(star) {
     let idx = this.state.filterArray.indexOf(star);
+    console.log(idx);
     if (idx >= 0) {
       let new_filter_array = this.state.filterArray.slice();
       new_filter_array.splice(idx, 1);
@@ -19,7 +20,10 @@ class Reviews extends React.Component {
     } else {
       let new_array = this.state.filterArray.slice();
       new_array.push(star);
-      this.setState({ filterArray: new_array });
+      console.log("add new filter", new_array);
+      this.setState({ filterArray: new_array, filterOn: true }, () => {
+        console.log(this.state.filterArray, this.state.filterOn);
+      });
     }
     if (this.state.filterArray.length === 0) {
       this.setState({ filterOn: false });
@@ -34,15 +38,15 @@ class Reviews extends React.Component {
     return (
       <div className="reviews">
         <h5 className="review-title">Ratings & Reviews</h5>
-        <Grid container spacing={3}>
-          <Grid item xs={5}>
+        <Grid container>
+          <Grid item xs={4}>
             <ReviewMetaContainer
               handleClearFilter={this.handleClearFilter}
               handleClickRating={this.handleClickRating}
               filterOn={this.state.filterOn}
             />
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={8}>
             <ReviewListContainer
               filterOn={this.state.filterOn}
               filterArray={this.state.filterArray}
