@@ -3,12 +3,12 @@ import ReviewFactorEntry from "./ReviewFactorEntry";
 
 const ReviewFactor = ({ characteristics }) => (
   <div>
-    {Object.keys(characteristics).map(factor => {
+    {Object.keys(characteristics).map((factor, i) => {
       return (
         <ReviewFactorEntry
           factor={characteristics[factor]}
           factor_name={factor}
-          key={factor.id}
+          key={i}
         />
       );
     })}

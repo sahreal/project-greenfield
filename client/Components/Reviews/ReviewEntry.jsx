@@ -4,6 +4,7 @@ import StarReviews from "./StarReviews.jsx";
 import "./reviews.css";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import axios from "axios";
+import { Row, Container, Col } from "react-bootstrap";
 
 class ReviewEntry extends React.Component {
   constructor(props) {
@@ -21,7 +22,9 @@ class ReviewEntry extends React.Component {
       axios.put(
         `http://18.223.1.30/reviews/helpful/${this.props.review.review_id}`
       );
-      this.setState({ helpful: this.props.review.helpfulness + 1 });
+      this.setState({ helpful: this.props.review.helpfulness + 1 }, () => {
+        console.log(this.state.helpful);
+      });
     }
     this.setState({
       helpfulClicked: true
@@ -39,48 +42,57 @@ class ReviewEntry extends React.Component {
   }
   render() {
     return (
-      <div className="review-entry">
-        <Grid container justify="space-around">
-          <Grid item xs={12} className="review-username">
+      <Container className="review-entry">
+        <Row>
+          <Col className="review-username">
             <AccountCircleIcon /> {this.props.review.reviewer_name}
-          </Grid>
-          <Grid item xs={6}>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={3} lg={2}>
             <StarReviews avg_rating={this.props.review.rating} />
-          </Grid>
-          <Grid item xs={6}>
-            <div className="review-name-and-date">
+          </Col>
+          <Col sm={6} lg={8}>
+            <div className="review-summary">{this.props.review.summary}</div>
+          </Col>
+          <Row>
+            <Col>
               {new Date(this.props.review.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "short",
                 day: "numeric"
               })}
-            </div>
-          </Grid>
-        </Grid>
-        <Grid container>
-          <Grid item xs={12}>
-            <div className="review-summary">{this.props.review.summary}</div>
-          </Grid>
-          <Grid item xs={12}>
-            <div>{this.props.review.body}</div>
-          </Grid>
-          <Grid item xs={12}>
-            {this.props.review.recommend ? (
-              <div>I recommend this product</div>
-            ) : null}
-          </Grid>
-          <Grid item xs={12}>
-            {this.props.review.response ? <div>Response:</div> : null}
-          </Grid>
-        </Grid>
-        <Grid container spacing={4}>
-          <Grid item xs={3}>
+            </Col>
+          </Row>
+        </Row>
+        <Row>
+          <Col>{this.props.review.body}</Col>
+        </Row>
+        <Row>
+          {this.props.review.photos.map(photo => {
+            return (
+              <Col>
+                <img className="review-entry-photo" src={photo.url} alt="" />
+              </Col>
+            );
+          })}
+        </Row>
+        <Row>
+          {this.props.review.recommend ? (
+            <Col className="review-entry-recommend">
+              I recommend this product
+            </Col>
+          ) : null}
+        </Row>
+        <Row>{this.props.review.response ? <div>Response:</div> : null}</Row>
+        <Row>
+          <Col xs={3}>
             <div className="review-helpful">
               Helpful?{" "}
               <span
                 className="review-helpful-yes"
                 onClick={() => {
-                  this.handleClickHelpful;
+                  this.handleClickHelpful();
                 }}
               >
                 Yes
@@ -91,8 +103,8 @@ class ReviewEntry extends React.Component {
                   : `(${this.props.review.helpfulness})`}
               </span>
             </div>
-          </Grid>
-          <Grid item xs={3}>
+          </Col>
+          <Col xs={3}>
             <div
               className="review-report"
               onClick={() => {
@@ -101,10 +113,10 @@ class ReviewEntry extends React.Component {
             >
               {this.state.reportClicked ? "Reported" : "Report"}
             </div>
-          </Grid>
-          <Grid item xs={6}></Grid>
-        </Grid>
-      </div>
+          </Col>
+          <Col xs={6}></Col>
+        </Row>
+      </Container>
     );
   }
 }

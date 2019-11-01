@@ -1,9 +1,11 @@
 import React from "react";
 import ReviewEntry from "./ReviewEntry.jsx";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import LoadReview from "./LoadReview.jsx";
 import axios from "axios";
+import { Container, Col, Row } from "react-bootstrap";
+import { Button, ButtonToolbar } from "react-bootstrap";
+import "./reviews.css";
+import ReviewModal from "./ReviewModal.jsx";
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -11,7 +13,8 @@ class ReviewList extends React.Component {
     this.state = {
       pageNum: 1,
       sortBy: "relevant",
-      reviewList: []
+      reviewList: [],
+      modalShow: false
     };
     this.handleClickMoreReview = this.handleClickMoreReview.bind(this);
     this.updatePage = this.updatePage.bind(this);
@@ -59,10 +62,8 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    console.log("props", this.props);
-    console.log("filter Array in reviewlist", this.props.filterArray);
     if (this.props.filterOn) {
-      var allReviews = this.props.reviewList;
+      var allReviews = this.props.reviewList.slice();
       var filterReviewList = [];
       for (let i = 0; i < this.props.filterArray.length; i++) {
         let filterR = allReviews.filter(review => {
@@ -70,19 +71,20 @@ class ReviewList extends React.Component {
         });
         filterReviewList = [...filterReviewList, ...filterR];
       }
-      console.log("filterlist", filterReviewList);
     }
     return (
-      <div>
-        <div>
-          <p>{this.props.reviewList.length} Reviews, sorted by</p>
-          <select value={this.state.sortBy} onChange={this.handleSortBy}>
-            <option value="relevant">Relevant</option>
-            <option value="helpful">Helpful</option>
-            <option value="newest">Newest</option>
-          </select>
-        </div>
-        <div className="review-reviewList">
+      <Container className="review-list">
+        <Row className="review-sortBy">
+          <Col>
+            <p>{this.props.reviewList.length} Reviews, sorted by</p>
+            <select value={this.state.sortBy} onChange={this.handleSortBy}>
+              <option value="relevant">Relevant</option>
+              <option value="helpful">Helpful</option>
+              <option value="newest">Newest</option>
+            </select>
+          </Col>
+        </Row>
+        <Row className="review-reviewList">
           {this.props.filterOn
             ? filterReviewList.map(review => {
                 return <ReviewEntry review={review} key={review.review_id} />;
@@ -90,20 +92,34 @@ class ReviewList extends React.Component {
             : this.state.reviewList.map(review => {
                 return <ReviewEntry review={review} key={review.review_id} />;
               })}
-        </div>
-        <div>
-          <Grid container justify="flex-start">
-            <Grid item xs={2}>
-              <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
-            </Grid>
-            <Grid item xs={2}>
-              <Button size="small" variant="outlined">
+        </Row>
+        <Row className="review-buttons">
+          <Col xs={3}>
+            <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
+          </Col>
+          <Col x3={3}>
+            <ButtonToolbar>
+              <Button
+                size="sm"
+                variant="outline-dark"
+                onClick={() => {
+                  this.setState({ modalShow: true });
+                }}
+              >
                 Add a Reviews
               </Button>
-            </Grid>
-          </Grid>
-        </div>
-      </div>
+              <ReviewModal
+                productid={this.props.productId}
+                metadata={this.props.metaData}
+                show={this.state.modalShow}
+                onHide={() => {
+                  this.setState({ modalShow: false });
+                }}
+              />
+            </ButtonToolbar>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

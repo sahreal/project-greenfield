@@ -20,7 +20,7 @@
 }
 
 .review-username {
-  font-size: 15px;
+  font-size: 18px;
 }
 .review-entry {
   margin: 25px;
@@ -72,4 +72,41 @@
 }
 .rating-amount:hover {
   color: red;
+}
+.review-entry-recommend {
+  font-style: italic;
+}
+.review-entry-photo {
+  width: 20%;
+}
+.review-reviewList {
+  height: 500px;
+  overflow: auto;
+}
+.review-choose-rating {
+  width: 200;
+  display: flex;
+  align-items: center;
+}
+.review-star-meaning {
+  margin-left: 10px;
+  font-size: 15px;
+}
+.review-text {
+  font-size: 12px;
+}
+.review-label {
+  font-size: 14px;
+}
+.review-radio-check {
+  font-size: 14px;
+}
+.review-form {
+  width: 80%;
+}
+.review-modal-body {
+  width: 700px;
+}
+.review-charac {
+  display: flex;
 }

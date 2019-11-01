@@ -6,7 +6,7 @@ const StarReviews = ({ avg_rating }) => (
   <div className="review-starReview">
     <Rating
       name="customized-empty"
-      value={avg_rating}
+      value={Number(avg_rating)}
       precision={0.25}
       emptyIcon={<StarBorderIcon fontSize="inherit" />}
       readOnly
