@@ -1,4 +1,13 @@
 import React from "react";
+import axios from "axios";
+
+const submitQ = async () => {
+  await axios.post("http://18.223.1.30/qa/14", {
+    body: "does it smell?",
+    name: "danny",
+    email: "danny@kim.com"
+  });
+};
 
 const QuestionModal = ({ toggleModal, show }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
@@ -41,7 +50,7 @@ const QuestionModal = ({ toggleModal, show }) => {
             />
             <p>For authenication reasons, you will not be emailed</p>
           </label>
-          <input type="button" value="Submit" />
+          <input type="button" value="Submit" onClick={submitQ} />
         </form>
       </section>
     </div>
