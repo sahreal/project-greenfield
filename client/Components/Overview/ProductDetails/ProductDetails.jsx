@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import StyleSelectorContainer from "../../../containers/StyleSelectorContainer.jsx";
 //import StyleSelector from "./StyleSelector";
 import StarReviewsContainer from "../../../containers/StarReviewsContainer";
@@ -15,7 +13,9 @@ import facebook from "../logos/facebook.svg";
 import pinterest from "../logos/pinterest.svg";
 import twitter from "../logos/twitter.svg";
 import Container from "@material-ui/core/Container";
+import Modal from "./Modal.jsx";
 import "./productDetails.css";
+import JumpScroll from "./JumpScroll.jsx";
 
 const useStyles = makeStyles({
   root: {
@@ -38,7 +38,10 @@ const ProductDetails = ({
   id,
   styleId,
   handleStyleChange,
-  checkMarker
+  checkMarker,
+  collectInput,
+  size,
+  amount
 }) => {
   const classes = useStyles();
 
@@ -46,7 +49,7 @@ const ProductDetails = ({
     <div className="ProductDetails">
       <div className="stars">
         <StarReviewsContainer />
-        <div className="readReviews">Read {reviewList.length} Reviews</div>
+        <JumpScroll reviewList={reviewList} />
         <ProductInfo
           productDetails={productDetails}
           productData={productData[styleId]}
@@ -75,17 +78,15 @@ const ProductDetails = ({
           </FormControl>
         </Container>
       ) : (
-        <ProductForm productData={productData[id]} />
+        <ProductForm
+          productData={productData[id]}
+          collectInput={collectInput}
+          size={size}
+          amount={amount}
+          styleId={styleId}
+        />
       )}
-      <Button
-        variant="outlined"
-        color="inherit"
-        size="large"
-        className={classes.button}
-        startIcon={<AddShoppingCartIcon />}
-      >
-        Add to Cart
-      </Button>
+
       <div className="socialMedia">
         <a href="https://www.facebook.com">
           <img src={facebook} alt="FBLogo" className="fb sharebutton" />
