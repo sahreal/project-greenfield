@@ -59,7 +59,7 @@ const FactorSlider = withStyles({
 
 const ReviewFactorEntry = ({ factor, factor_name }) => {
   return (
-    <div>
+    <div className="review-factor">
       <div>{factor_name}</div>
       <div>
         <FactorSlider

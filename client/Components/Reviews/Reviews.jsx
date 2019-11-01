@@ -34,15 +34,15 @@ class Reviews extends React.Component {
     return (
       <div className="reviews">
         <h5 className="review-title">Ratings & Reviews</h5>
-        <Grid container spacing={3}>
-          <Grid item xs={5}>
+        <Grid container>
+          <Grid item xs={4}>
             <ReviewMetaContainer
               handleClearFilter={this.handleClearFilter}
               handleClickRating={this.handleClickRating}
               filterOn={this.state.filterOn}
             />
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={8}>
             <ReviewListContainer
               filterOn={this.state.filterOn}
               filterArray={this.state.filterArray}

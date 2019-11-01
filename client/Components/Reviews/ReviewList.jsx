@@ -73,11 +73,15 @@ class ReviewList extends React.Component {
       }
     }
     return (
-      <Container className="review-list">
+      <div className="review-list">
         <Row className="review-sortBy">
           <Col>
             <p>{this.props.reviewList.length} Reviews, sorted by</p>
-            <select value={this.state.sortBy} onChange={this.handleSortBy}>
+            <select
+              value={this.state.sortBy}
+              onChange={this.handleSortBy}
+              className="sortBy-select"
+            >
               <option value="relevant">Relevant</option>
               <option value="helpful">Helpful</option>
               <option value="newest">Newest</option>
@@ -93,14 +97,14 @@ class ReviewList extends React.Component {
                 return <ReviewEntry review={review} key={review.review_id} />;
               })}
         </Row>
-        <Row className="review-buttons">
-          <Col xs={3}>
+        <Row className="review-buttons mt-5">
+          <Col xs={2}>
             <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
           </Col>
-          <Col x3={3}>
+          <Col x3={2}>
             <ButtonToolbar>
               <Button
-                size="sm"
+                size="md"
                 variant="outline-dark"
                 onClick={() => {
                   this.setState({ modalShow: true });
@@ -119,7 +123,7 @@ class ReviewList extends React.Component {
             </ButtonToolbar>
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }
