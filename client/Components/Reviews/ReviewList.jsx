@@ -109,6 +109,7 @@ class ReviewList extends React.Component {
                 Add a Reviews
               </Button>
               <ReviewModal
+                productid={this.props.productId}
                 metadata={this.props.metaData}
                 show={this.state.modalShow}
                 onHide={() => {

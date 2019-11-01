@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import "./reviews.css";
 
 const characLabels = {
@@ -48,23 +48,31 @@ const characLabels = {
   }
 };
 
-const ReviewCharacForm = () => {
-  return (
-    <Form.Group>
-      {Object.keys(characLabels).map(charac => {
-        return [1, 2, 3, 4, 5].map(value => {
+const ReviewCharacForm = ({ handleSelectCharac }) => {
+  return Object.keys(characLabels).map(charac => {
+    return (
+      <Row>
+        <Col>
+          <div className="review-text">{charac}</div>
+        </Col>
+        {[1, 2, 3, 4, 5].map(value => {
           return (
-            <Form.Check
-              inline
-              value={value}
-              label={charac.value}
-              type="radio"
-              name={charac}
-            ></Form.Check>
+            <Col>
+              <input
+                className="review-radio-check"
+                value={value}
+                type="radio"
+                name={charac}
+                onChange={e => {
+                  handleSelectCharac(e);
+                }}
+              />
+              <label className="review-text">{value}</label>
+            </Col>
           );
-        });
-      })}
-    </Form.Group>
-  );
+        })}
+      </Row>
+    );
+  });
 };
 export default ReviewCharacForm;

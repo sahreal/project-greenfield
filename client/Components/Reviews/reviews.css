@@ -92,3 +92,21 @@
   margin-left: 10px;
   font-size: 15px;
 }
+.review-text {
+  font-size: 12px;
+}
+.review-label {
+  font-size: 14px;
+}
+.review-radio-check {
+  font-size: 14px;
+}
+.review-form {
+  width: 80%;
+}
+.review-modal-body {
+  width: 800px;
+}
+.review-charac {
+  display: flex;
+}

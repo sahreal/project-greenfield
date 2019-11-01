@@ -4,12 +4,16 @@ import { Button } from "react-bootstrap";
 import Rating from "@material-ui/lab/Rating";
 import ReviewCharacForm from "./ReviewCharacForm.jsx";
 import "./reviews.css";
+import axios from "axios";
 
 class ReviewModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
+      reviewSummary: "",
+      reviewBody: "",
+      nickName: "",
       hover: 0,
       recommended: 1,
       characteristics: {}
@@ -17,15 +21,52 @@ class ReviewModal extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStarHoverChange = this.handleStarHoverChange.bind(this);
     this.handleRecommend = this.handleRecommend.bind(this);
+    this.handleSelectCharac = this.handleSelectCharac.bind(this);
+    this.handleSummit = this.handleSummit.bind(this);
   }
   handleInputChange(e) {
-    this.setState({ email: e.target.value });
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({ [name]: value });
   }
   handleStarHoverChange(newHover) {
     this.setState({ hover: newHover });
   }
   handleRecommend(e) {
     this.setState({ recommended: e.target.value });
+  }
+  handleSelectCharac(e) {
+    let new_charac = this.state.characteristics;
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    new_charac[name] = value;
+    this.setState({ characteristics: new_charac });
+  }
+  handleSummit() {
+    let characToAdd = {};
+    for (let key in this.state.characteristics) {
+      if (this.props.metadata.characteristics[key]) {
+        let charId = this.props.metadata.characteristics[key]["id"];
+        characToAdd[charId] = this.state.characteristics[key];
+      }
+    }
+    let new_review = {
+      rating: this.state.hover,
+      summary: this.state.reviewSummary,
+      body: this.state.reviewBody,
+      recommended: this.state.recommended,
+      name: this.state.nickName,
+      email: this.state.email,
+      characteristics: characToAdd
+    };
+    console.log(this.props.productid);
+    axios
+      .post(`http://18.223.1.30/reviews/${this.props.productid}`, new_review)
+      .then(response => {
+        console.log(response);
+      });
   }
   render() {
     const labels = {
@@ -41,9 +82,12 @@ class ReviewModal extends React.Component {
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Write your Review
-            <Modal.Body>
-              <Form>
+            <Modal.Body className="review-modal-body">
+              <Form className="review-form">
                 <Form.Group className="review-choose-rating">
+                  <Form.Label className="review-label">
+                    Overall Rating*
+                  </Form.Label>
                   <Rating
                     name="hover-side"
                     value={this.state.hover}
@@ -57,8 +101,11 @@ class ReviewModal extends React.Component {
                   </p>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Do you recommend this product?</Form.Label>
+                  <Form.Label className="review-label">
+                    Do you recommend this product? *
+                  </Form.Label>
                   <Form.Check
+                    className="review-radio-check"
                     inline
                     label="Yes"
                     value={1}
@@ -67,6 +114,7 @@ class ReviewModal extends React.Component {
                     onChange={this.handleRecommend}
                   />
                   <Form.Check
+                    className="review-radio-check"
                     inline
                     label="No"
                     value={0}
@@ -75,22 +123,67 @@ class ReviewModal extends React.Component {
                     onChange={this.handleRecommend}
                   />
                 </Form.Group>
+                <Form.Label className="review-label">
+                  Characteristics *
+                </Form.Label>
+                <ReviewCharacForm
+                  handleSelectCharac={this.handleSelectCharac}
+                />
                 <Form.Group>
-                  <ReviewCharacForm />
+                  <Form.Label className="review-label">
+                    Review Summary
+                  </Form.Label>
+                  <Form.Control
+                    size="sm"
+                    onChange={this.handleInputChange}
+                    value={this.state.reviewSummary}
+                    type="text"
+                    name="reviewSummary"
+                    placeholder="Example: Best purchase ever"
+                  />
                 </Form.Group>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
+                <Form.Group>
+                  <Form.Label className="review-label">Review Body*</Form.Label>
                   <Form.Control
                     size="sm"
                     onChange={e => {
                       this.handleInputChange(e);
                     }}
+                    value={this.state.reviewBody}
+                    name="reviewBody"
+                    type="textarea"
+                    placeholder="Why did you like the product or not?"
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label className="review-label">Nick Name*</Form.Label>
+                  <Form.Control
+                    size="sm"
+                    onChange={e => {
+                      this.handleInputChange(e);
+                    }}
+                    name="nickName"
+                    value={this.state.nickName}
+                    type="text"
+                    placeholder="Example: jackson11!"
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label className="review-label">
+                    Email address
+                  </Form.Label>
+                  <Form.Control
+                    size="sm"
+                    onChange={e => {
+                      this.handleInputChange(e);
+                    }}
+                    name="email"
                     value={this.state.email}
                     type="email"
                     placeholder="Example: jackson11@gmail.com"
                   />
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
+                  <Form.Text className="text-muted review-text">
+                    For authentication reasons, you will not be emailed
                   </Form.Text>
                 </Form.Group>
               </Form>
@@ -98,6 +191,15 @@ class ReviewModal extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>
+          <Button
+            size="sm"
+            variant="outline-dark"
+            onClick={() => {
+              this.handleSummit();
+            }}
+          >
+            Summit
+          </Button>
           <Button
             onClick={() => {
               this.props.onHide();
