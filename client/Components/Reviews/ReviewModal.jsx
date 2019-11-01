@@ -56,11 +56,13 @@ class ReviewModal extends React.Component {
       rating: this.state.hover,
       summary: this.state.reviewSummary,
       body: this.state.reviewBody,
-      recommended: this.state.recommended,
+      recommend: this.state.recommended,
       name: this.state.nickName,
       email: this.state.email,
-      characteristics: characToAdd
+      characteristics: characToAdd,
+      photos: []
     };
+    console.log(new_review);
     console.log(this.props.productid);
     axios
       .post(`http://18.223.1.30/reviews/${this.props.productid}`, new_review)
@@ -108,7 +110,7 @@ class ReviewModal extends React.Component {
                     className="review-radio-check"
                     inline
                     label="Yes"
-                    value={1}
+                    value={true}
                     type="radio"
                     name="recommend"
                     onChange={this.handleRecommend}
@@ -117,7 +119,7 @@ class ReviewModal extends React.Component {
                     className="review-radio-check"
                     inline
                     label="No"
-                    value={0}
+                    value={false}
                     type="radio"
                     name="recommend"
                     onChange={this.handleRecommend}
