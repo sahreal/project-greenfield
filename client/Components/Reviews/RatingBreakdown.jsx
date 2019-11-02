@@ -5,7 +5,7 @@ const RatingBreakdown = ({
   metaData,
   handleClickRating,
   handleClearFilter,
-  filterOn
+  filterArray
 }) => {
   let totalRatings = Object.values(metaData.ratings).reduce(
     (partial_sum, a) => partial_sum + a,
@@ -15,7 +15,7 @@ const RatingBreakdown = ({
   return (
     <div>
       <p>Rating Breakdown</p>
-      {filterOn ? (
+      {filterArray.length > 0 ? (
         <div className="review-filter">
           Filters have been applied{" "}
           <span

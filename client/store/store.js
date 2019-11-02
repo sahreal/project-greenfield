@@ -39,11 +39,13 @@ store.dispatch({
 
 getInitialReviewsMeta(productId).then(
   ({ characteristics, ratings, recommended }) => {
-    let allRatings = Object.values(ratings);
-    let rating =
-      allRatings.reduce((partial_sum, a) => partial_sum + a, 0) /
-      allRatings.length;
-    let avg_rating = (Math.round(rating * 10) / 10).toFixed(1);
+    let totalS = 0;
+    let totalD = 0;
+    for (let key in ratings) {
+      totalS += Number(key) * ratings[key];
+      totalD += ratings[key];
+    }
+    let avg_rating = (Math.round((totalS / totalD) * 10) / 10).toFixed(1);
     store.dispatch(changeRating(avg_rating));
     store.dispatch(changeMetaData({ characteristics, ratings, recommended }));
   }

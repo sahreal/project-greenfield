@@ -9,7 +9,7 @@ const ReviewMeta = ({
   metaData,
   handleClickRating,
   handleClearFilter,
-  filterOn
+  filterArray
 }) => {
   let totalRecommended = Object.values(metaData.recommended).reduce(
     (partial_sum, a) => partial_sum + a,
@@ -28,7 +28,7 @@ const ReviewMeta = ({
           metaData={metaData}
           handleClearFilter={handleClearFilter}
           handleClickRating={handleClickRating}
-          filterOn={filterOn}
+          filterArray={filterArray}
         />
       </div>
       <div className="review-recommended">

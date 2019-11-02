@@ -1,6 +1,5 @@
 import React from "react";
 import ReviewEntry from "./ReviewEntry.jsx";
-import LoadReview from "./LoadReview.jsx";
 import axios from "axios";
 import { Container, Col, Row } from "react-bootstrap";
 import { Button, ButtonToolbar } from "react-bootstrap";
@@ -16,66 +15,46 @@ class ReviewList extends React.Component {
       reviewList: [],
       modalShow: false
     };
-    this.handleClickMoreReview = this.handleClickMoreReview.bind(this);
-    this.updatePage = this.updatePage.bind(this);
     this.fetchReviews = this.fetchReviews.bind(this);
     this.handleSortBy = this.handleSortBy.bind(this);
   }
   componentDidMount() {
     this.fetchReviews();
   }
-  updatePage() {
-    let newPageNum = this.state.pageNum + 1;
-    this.setState({ pageNum: newPageNum });
-  }
   fetchReviews() {
     axios
       .get(`http://18.223.1.30/reviews/${this.props.productId}/list`, {
-        params: { page: this.state.pageNum, count: 2, sort: this.state.sortBy }
+        params: { count: 100000, sort: this.state.sortBy }
       })
       .then(({ data }) => {
-        let currentReviewList = this.state.reviewList;
-        let newReviewList = currentReviewList.concat(data.results);
-        this.setState({ reviewList: newReviewList });
+        this.setState({ reviewList: data.results });
       })
       .catch(e => {
         console.log(e);
       });
   }
-  handleClickMoreReview() {
-    Promise.resolve(this.updatePage())
-      .then(this.fetchReviews)
-      .catch(err => {
-        console.log(err);
-      });
-  }
+
   handleSortBy(e) {
-    this.setState(
-      { reviewList: [], pageNum: 1, sortBy: e.target.value },
-      () => {
-        this.fetchReviews();
-      }
-    );
+    this.setState({ pageNum: 1, sortBy: e.target.value }, () => {
+      this.fetchReviews();
+    });
   }
 
   render() {
-    if (this.props.filterOn) {
-      console.log("inside reviewlist", this.props.filterArray);
-      var allReviews = this.props.reviewList;
-      var filterReviewList = [];
-      for (let i = 0; i < this.props.filterArray.length; i++) {
-        let filterR = allReviews.filter(review => {
-          return review.rating + "" === this.props.filterArray[i];
-        });
-        filterReviewList = [...filterReviewList, ...filterR];
-        console.log(filterReviewList);
-      }
+    console.log("pageNum", this.state.pageNum);
+    let allReviews = this.state.reviewList.slice();
+    let filterReviewList = [];
+    for (let i = 0; i < this.props.filterArray.length; i++) {
+      let filterR = allReviews.filter(review => {
+        return review.rating + "" === this.props.filterArray[i];
+      });
+      filterReviewList = [...filterReviewList, ...filterR];
     }
     return (
       <div className="review-list">
         <Row className="review-sortBy">
           <Col>
-            <p>{this.props.reviewList.length} Reviews, sorted by</p>
+            <p>{this.state.reviewList.length} Reviews, sorted by</p>
             <select
               value={this.state.sortBy}
               onChange={this.handleSortBy}
@@ -88,19 +67,30 @@ class ReviewList extends React.Component {
           </Col>
         </Row>
         <Row className="review-reviewList">
-          {this.props.filterOn
-            ? filterReviewList.map(review => {
-                return <ReviewEntry review={review} key={review.review_id} />;
-              })
-            : this.state.reviewList.map(review => {
+          {this.props.filterArray.length === 0
+            ? this.state.reviewList
+                .slice(0, this.state.pageNum * 2)
+                .map(review => {
+                  return <ReviewEntry review={review} key={review.review_id} />;
+                })
+            : filterReviewList.map(review => {
                 return <ReviewEntry review={review} key={review.review_id} />;
               })}
         </Row>
         <Row className="review-buttons mt-5">
           <Col xs={2}>
-            <LoadReview handleClickMoreReview={this.handleClickMoreReview} />
+            <Button
+              size="md"
+              variant="outline-dark"
+              onClick={() => {
+                let newPageNum = this.state.pageNum + 1;
+                this.setState({ pageNum: newPageNum });
+              }}
+            >
+              More Reviews
+            </Button>
           </Col>
-          <Col x3={2}>
+          <Col xs={2}>
             <ButtonToolbar>
               <Button
                 size="md"
