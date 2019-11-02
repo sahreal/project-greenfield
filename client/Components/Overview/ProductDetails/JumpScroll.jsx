@@ -9,19 +9,7 @@ import {
   scroller
 } from "react-scroll";
 
-// var options = {
-//   activeClass: "active",
-//   spy: true,
-//   smooth: true,
-//   hashSpy: true,
-//   offset: 50,
-//   duration: 500,
-//   delay: 1000,
-//   isDynamic: true
-// };
-// var scroll = Scroll.animateScroll;
-// scroll.scrollTo(100, options);
-
+//Jump scroll set by the pixel. When clicked sends to reviews
 function JumpScroll({ reviewList }) {
   return (
     <div className="readReviews">

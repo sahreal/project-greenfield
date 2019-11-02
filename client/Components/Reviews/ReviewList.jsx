@@ -41,7 +41,7 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    console.log("pageNum", this.state.pageNum);
+    console.log("pageNum", this.state.pageNum, this.props.filterArray);
     let allReviews = this.state.reviewList.slice();
     let filterReviewList = [];
     for (let i = 0; i < this.props.filterArray.length; i++) {
@@ -70,27 +70,30 @@ class ReviewList extends React.Component {
           {this.props.filterArray.length === 0
             ? this.state.reviewList
                 .slice(0, this.state.pageNum * 2)
-                .map(review => {
-                  return <ReviewEntry review={review} key={review.review_id} />;
+                .map((review, i) => {
+                  return <ReviewEntry review={review} key={i} />;
                 })
-            : filterReviewList.map(review => {
-                return <ReviewEntry review={review} key={review.review_id} />;
+            : filterReviewList.map((review, i) => {
+                return <ReviewEntry review={review} key={i} />;
               })}
         </Row>
         <Row className="review-buttons mt-5">
-          <Col xs={2}>
-            <Button
-              size="md"
-              variant="outline-dark"
-              onClick={() => {
-                let newPageNum = this.state.pageNum + 1;
-                this.setState({ pageNum: newPageNum });
-              }}
-            >
-              More Reviews
-            </Button>
+          <Col xs={3}>
+            {this.props.filterArray.length > 0 ||
+            this.state.reviewList.length <= 2 * this.state.pageNum ? null : (
+              <Button
+                size="md"
+                variant="outline-dark"
+                onClick={() => {
+                  let newPageNum = this.state.pageNum + 1;
+                  this.setState({ pageNum: newPageNum });
+                }}
+              >
+                More Reviews
+              </Button>
+            )}
           </Col>
-          <Col xs={2}>
+          <Col xs={3}>
             <ButtonToolbar>
               <Button
                 size="md"

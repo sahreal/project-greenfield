@@ -2,7 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "./ImageGallery.css";
 
-const ImageCarousel = ({ productData, handleClick, id, showModal }) => {
+const ImageCarousel = ({ productData, handleClick }) => {
+  //React Slick arrow functions
   function PrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -33,6 +34,7 @@ const ImageCarousel = ({ productData, handleClick, id, showModal }) => {
     );
   }
 
+  //React Slick settings
   const settings = {
     dots: true,
     arrows: true,
@@ -44,16 +46,13 @@ const ImageCarousel = ({ productData, handleClick, id, showModal }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: false
-    // focusOnSelect: true
-    // adaptiveHeight: true,
-    // centerPadding: "10px"
   };
 
   return (
     <div className="slider">
       <Slider {...settings}>
         {productData.map((img, index) => (
-          <div className="DONTDELETEMESAHAR">
+          <div className="setImageHeight">
             <img key={index} src={img.url} onClick={handleClick} />
           </div>
         ))}

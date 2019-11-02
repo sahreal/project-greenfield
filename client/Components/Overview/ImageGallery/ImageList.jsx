@@ -26,7 +26,6 @@ const ImageList = ({ productData, handleClick, ImageMarker, styleId }) => {
                     index={index}
                     imageThumbnail={item.thumbnail_url}
                     handleClick={handleClick}
-                    ImageMarker={ImageMarker}
                     styleId={styleId}
                   />
                 );
